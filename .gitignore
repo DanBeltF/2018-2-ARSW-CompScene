@@ -1,0 +1,12 @@
+target
+./target
+.~*
+idea
+.idea
+*.iml
+.#*
+*.log
+.gitold
+.gradle
+.DS_Store
+/nbproject/
