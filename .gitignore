@@ -1,12 +1,35 @@
 target
 ./target
-.~*
+!.mvn/wrapper/maven-wrapper.jar
+
+
+### STS ###
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### IntelliJ IDEA ###
 idea
 .idea
+*.iws
 *.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### Others ###
+.~*
 .#*
 *.log
 .gitold
 .gradle
 .DS_Store
-/nbproject/
