@@ -23,3 +23,6 @@ Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador co
 
 ---
 ### Tecnologías utilizadas
+---
+### Licencia
+MIT
