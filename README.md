@@ -9,7 +9,7 @@
 #### Juego educativo, competitivo y a su vez de entretenimiento tipo trivia que pretende poner a prueba los conocimientos que el usuario tenga sobre: matemáticas,  programación o lógica calculativa, mediante tres tipos de pregunta en tiempo real.
 ---
 ### Integrantes
-- Daniel E. Beltran Franco
+- Daniel E. Beltrán Franco
 - Daniel E. Castiblanco Rocha
 - Cesar E. Lanos Camacho
 ### Profesor
