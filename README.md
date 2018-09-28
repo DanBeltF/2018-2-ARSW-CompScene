@@ -2,6 +2,8 @@
 [![Heroku](https://wmpics.pics/di-D9YP.png)](https://compscene.herokuapp.com/)
 [![CircleCI](https://circleci.com/gh/DanBeltF/2018-2-ARSW-CompScene.svg?style=svg)](https://circleci.com/gh/DanBeltF/2018-2-ARSW-CompScene)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6c747623691421eaf09afc916a8b5fd)](https://www.codacy.com/app/DanBeltF/2018-2-ARSW-CompScene?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DanBeltF/2018-2-ARSW-CompScene&amp;utm_campaign=Badge_Grade)
+[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/badges/shields.svg)](https://github.com/DanBeltF/2018-2-ARSW-CompScene)
+[![MIT license](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://lbesson.mit-license.org/)
 
 ## Arquitecturas de Software (ARSW)<br />
 ## 2018-2<br/>
