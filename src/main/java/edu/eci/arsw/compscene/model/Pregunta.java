@@ -21,22 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.test;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+package edu.eci.arsw.compscene.model;
 
 /**
  *
- * @author 2104784
+ * @author dbeltran
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class CompScenceApplicationServicesTests {
-    @Test
-    public void contextLoads() {
-        
-    }
+public class Pregunta {
+    
 }

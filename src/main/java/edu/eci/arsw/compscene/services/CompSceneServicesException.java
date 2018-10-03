@@ -21,20 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package edu.eci.arsw.compscene.services;
 
 /**
  *
  * @author dbeltran
  */
-
-@SpringBootApplication
-public class CompSceneApplication {
+public class CompSceneServicesException extends Exception {
     
-    public static void main(String[] args) {
-        SpringApplication.run(CompSceneApplication.class, args);
+    public CompSceneServicesException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public CompSceneServicesException(String message) {
+        super(message);
     }
 }

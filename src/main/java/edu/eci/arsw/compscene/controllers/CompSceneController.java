@@ -21,20 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene;
+package edu.eci.arsw.compscene.controllers;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import edu.eci.arsw.compscene.services.CompSceneServices;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  *
  * @author dbeltran
  */
-
-@SpringBootApplication
-public class CompSceneApplication {
+@Service
+//@CrossOrigin("*")
+@RestController
+public class CompSceneController {
     
-    public static void main(String[] args) {
-        SpringApplication.run(CompSceneApplication.class, args);
-    }
+    @Autowired
+    private CompSceneServices compserv;
+    
 }

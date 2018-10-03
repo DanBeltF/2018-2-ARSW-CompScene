@@ -21,20 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene;
+package edu.eci.arsw.compscene.test;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import edu.eci.arsw.compscene.services.CompSceneServices;
+import edu.eci.arsw.compscene.services.CompSceneServicesException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  *
  * @author dbeltran
  */
 
-@SpringBootApplication
-public class CompSceneApplication {
+@RunWith(SpringRunner.class)
+@SpringBootTest()
+public class CompScenceServicesTests {
     
-    public static void main(String[] args) {
-        SpringApplication.run(CompSceneApplication.class, args);
+    @Autowired
+    private CompSceneServices compserv;
+    
+    @Test
+    public void contextLoads() throws CompSceneServicesException {
     }
+    
 }

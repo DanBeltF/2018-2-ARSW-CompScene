@@ -21,20 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene;
+package edu.eci.arsw.compscene.services;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author dbeltran
  */
 
-@SpringBootApplication
-public class CompSceneApplication {
-    
-    public static void main(String[] args) {
-        SpringApplication.run(CompSceneApplication.class, args);
+@Service
+public class CompSceneServicesStub implements CompSceneServices {
+
+    public CompSceneServicesStub() {
     }
+    
 }
