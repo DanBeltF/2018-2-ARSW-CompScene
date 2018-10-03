@@ -21,34 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.model;
+package edu.eci.arsw.compscene.model.Type;
+
+import edu.eci.arsw.compscene.model.Pregunta;
 
 /**
  *
- * @author dbeltran
+ * @author USER
  */
-public class Pregunta {
-    
-    private String statement;
-    private boolean answer_bool;
-    private String  answer_string;
-    private String  answer_fill;
-
-    public boolean isAnswer_bool() {
-        return answer_bool;
-    }
-
-    public String getAnswer_string() {
-        return answer_string;
-    }
-
-    public String getAnswer_fill() {
-        return answer_fill;
-    }
-
-    
-
-    
-    
+public interface Type {
+        
+    public void verificar(Pregunta pregunta);
     
 }

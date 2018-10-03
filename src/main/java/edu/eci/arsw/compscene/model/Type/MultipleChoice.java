@@ -21,12 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.model;
+package edu.eci.arsw.compscene.model.Type;
+
+import edu.eci.arsw.compscene.model.Pregunta;
 
 /**
  *
  * @author USER
  */
-public class SeleccionMultiple {
+public class MultipleChoice implements Type {
+    
+    private boolean answer_bool;
+
+    @Override
+    public void verificar(Pregunta pregunta) {
+        answer_bool = pregunta.isAnswer_bool();
+    }
     
 }
