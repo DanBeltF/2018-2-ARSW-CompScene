@@ -8,7 +8,7 @@
 ## Arquitecturas de Software (ARSW)<br />
 ## 2018-2<br/>
 ## Escuela Colombiana de Ingeniería Julio Garavito - Ingeniería de Sistemas
-#### :green_book: Juego educativo, competitivo y a su vez de entretenimiento tipo trivia que pretende poner a prueba los conocimientos que el usuario tenga sobre: matemáticas,  programación o lógica calculativa, mediante tres tipos de pregunta en tiempo real.
+#### Juego educativo, competitivo y a su vez de entretenimiento tipo trivia que pretende poner a prueba los conocimientos que el usuario tenga sobre: matemáticas,  programación o lógica calculativa, mediante tres tipos de pregunta en tiempo real.
 ---
 ### Integrantes
 - Daniel E. Beltrán Franco
@@ -20,7 +20,7 @@
 ### Pantallas de la aplicación
 
 ---
-### Instrucciones
+### :green_book: Instrucciones
 Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador conteste dicha pregunta deberá esperar a que se acabe ese tiempo límite para proceder a la siguiente y para visualizar si su respuesta fue o no correcta, sin embargo internamente se sabrá en cuanto tiempo la respondió y eso será un factor importante a la hora de calcular el puntaje entre los competidores.
 
 ---
@@ -29,9 +29,10 @@ Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador co
 ![](img/html_css_js.png)
 ![](img/Spring-Logo.png)
 ![](img/cover-heroku.png)
-
+![](img/circleciLogo.png)
+![](img/codacyLogo.png)
 ![](img/git-githubLogo.jpg)
 
 ---
 ### Licencia
-MIT
+[MIT](https://github.com/DanBeltF/2018-2-ARSW-CompScene/blob/master/LICENSE)
