@@ -31,6 +31,7 @@ Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador co
 ![](img/cover-heroku.png)
 ![](img/circleciLogo.png)
 ![](img/codacyLogo.png)
+![](img/git-githubLogo.jpg)
 
 ---
 ### Licencia
