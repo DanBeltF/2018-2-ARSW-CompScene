@@ -29,8 +29,7 @@ Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador co
 ![](img/html_css_js.png)
 ![](img/Spring-Logo.png)
 ![](img/cover-heroku.png)
-![](img/circleciLogo.png)
-![](img/codacyLogo.png)
+
 ![](img/git-githubLogo.jpg)
 
 ---
