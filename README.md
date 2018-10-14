@@ -17,22 +17,23 @@
 ### Profesor
 - Santiago Carrillo Barbosa
 ---
-### Pantallas de la aplicación
+### :camera: Pantallas de la aplicación
 
 ---
 ### :green_book: Instrucciones
 Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador conteste dicha pregunta deberá esperar a que se acabe ese tiempo límite para proceder a la siguiente y para visualizar si su respuesta fue o no correcta, sin embargo internamente se sabrá en cuanto tiempo la respondió y eso será un factor importante a la hora de calcular el puntaje entre los competidores.
 
 ---
-### Tecnologías utilizadas
-![](img/Java-Logo.png)
-![](img/html_css_js.png)
+### :wrench: Tecnologías utilizadas
+[![](img/Java-Logo.png)](https://www.java.com/)
+[![](img/html_css_js.png)](https://blog.hubspot.com/marketing/web-design-html-css-javascript)
 [![](img/axios.png)](https://github.com/axios/axios)
-![](img/Spring-Logo.png)
-![](img/cover-heroku.png)
-![](img/circleciLogo.png)
-![](img/codacyLogo.png)
-![](img/git-githubLogo.jpg)
+[![](img/Spring-Logo.png)](https://spring.io/)
+[![](img/astahLogo.png)](http://astah.net/)
+[![](img/cover-heroku.png)](https://www.heroku.com/)
+[![](img/circleciLogo.png)](https://circleci.com/)
+[![](img/codacyLogo.png)](https://www.codacy.com/)
+[![](img/git-githubLogo.jpg)](https://github.com/)
 
 ---
 ### Licencia
