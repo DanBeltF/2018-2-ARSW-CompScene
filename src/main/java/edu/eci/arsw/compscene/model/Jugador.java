@@ -23,6 +23,8 @@
  */
 package edu.eci.arsw.compscene.model;
 
+import edu.eci.arsw.compscene.persistence.impl.Tripla;
+import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import java.util.List;
 import java.util.Timer;
 
@@ -30,60 +32,64 @@ import java.util.Timer;
  *
  * @author dbeltran
  */
-public abstract class Pregunta {
-    
+public class Jugador {
     private int id;
-    private String enunciado;
-    private String tema;
-    private List<String> opcionesDeRespuesta;
-    private Timer tiempo;
+    private String nombre;
+    private String password;
+    private float puntajeJugador;
+    
+    public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
+        return 0;
+    }
+    
+    public List<Tupla<String,Float>> calcularPuntajePorTema(List<Tripla<String,Boolean,Timer>> respuestas){
+        return null;
+    }
+    
+    public Timer calcularTiempoPromedioEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
+        return new Timer();
+    }
+    
+    public float calcularTematicaMasAcertada(){
+        return 0;
+    }
+    
+    public float calcularTematicaMasFallada(){
+        return 0;
+    }
 
     public int getId() {
         return id;
     }
-    
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getEnunciado() {
-        return enunciado;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEnunciado(String enunciado) {
-        this.enunciado = enunciado;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getTema() {
-        return tema;
+    public String getPassword() {
+        return password;
     }
 
-    public void setTema(String tema) {
-        this.tema = tema;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public List<String> getOpcionesDeRespuesta() {
-        return opcionesDeRespuesta;
+    public float getPuntajeJugador() {
+        return puntajeJugador;
     }
 
-    public void setOpcionesDeRespuesta(List<String> opcionesDeRespuesta) {
-        this.opcionesDeRespuesta = opcionesDeRespuesta;
-    }
-
-    public Timer getTiempo() {
-        return tiempo;
-    }
-
-    public void setTiempo(Timer tiempo) {
-        this.tiempo = tiempo;
+    public void setPuntajeJugador(float puntajeJugador) {
+        this.puntajeJugador = puntajeJugador;
     }
     
-    public Object getRespuestaJugador(){
-        return null;
-    }
     
-    public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta){
-        return false;
-    }
     
 }

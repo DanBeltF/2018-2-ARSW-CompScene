@@ -21,21 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.model.Type;
+package edu.eci.arsw.compscene.model;
 
-import edu.eci.arsw.compscene.model.Pregunta;
+import edu.eci.arsw.compscene.persistence.impl.Tripla;
+import java.util.List;
+import java.util.Timer;
 
 /**
  *
- * @author USER
+ * @author dbeltran
  */
-public class MultipleChoice implements Type {
+public class Cuestionario {
+    private int id;
+    private List<Pregunta> preguntas;
+    private List<Tripla<String,Boolean,Timer>> respuestas;
     
-    private boolean answer_bool;
-
-    @Override
-    public void verificar(Pregunta pregunta) {
-        answer_bool = pregunta.isAnswer_bool();
+    public void generarCuestionario(List<Jugador> jugadores, List<Pregunta> preguntas){
+        
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(List<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
+    public List<Tripla<String,Boolean,Timer>> getRespuestas() {
+        return respuestas;
+    }
+
+    public void setRespuestas(List<Tripla<String,Boolean,Timer>> respuestas) {
+        this.respuestas = respuestas;
+    }
+    
     
 }

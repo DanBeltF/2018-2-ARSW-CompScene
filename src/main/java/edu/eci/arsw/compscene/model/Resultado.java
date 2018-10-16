@@ -21,21 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.model.Type;
+package edu.eci.arsw.compscene.model;
 
-import edu.eci.arsw.compscene.model.Pregunta;
+import edu.eci.arsw.compscene.persistence.impl.Tupla;
+import java.util.List;
+import java.util.Timer;
 
 /**
  *
- * @author USER
+ * @author dbeltran
  */
-public class TrueFalse implements Type{
+public class Resultado {
+    private int cantRespuestasCorrectas;
     
-    private boolean answer_bool;
-
-    @Override
-    public void verificar(Pregunta pregunta) {
-        answer_bool=pregunta.isAnswer_bool();
+    public float calcularPuntajeGeneral(List<Tupla<String,Float>> puntajeTema){
+        return 0;
     }
+    
+    public Timer calcularTiempoPromedioRespuestaGeneral(List<Timer> tiempos){
+        return new Timer();
+    }
+
+    public int getCantRespuestasCorrectas() {
+        return cantRespuestasCorrectas;
+    }
+
+    public void setCantRespuestasCorrectas(int cantRespuestasCorrectas) {
+        this.cantRespuestasCorrectas = cantRespuestasCorrectas;
+    }
+    
     
 }
