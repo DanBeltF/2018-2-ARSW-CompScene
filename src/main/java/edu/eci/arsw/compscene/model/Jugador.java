@@ -37,6 +37,13 @@ public class Jugador {
     private String nombre;
     private String password;
     private float puntajeJugador;
+
+    public Jugador(int id, String nombre, String password, float puntajeJugador) {
+        this.id = id;
+        this.nombre = nombre;
+        this.password = password;
+        this.puntajeJugador = puntajeJugador;
+    }
     
     public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
         return 0;

@@ -33,6 +33,10 @@ import java.util.Timer;
  */
 public class Resultado {
     private int cantRespuestasCorrectas;
+
+    public Resultado(int cantRespuestasCorrectas) {
+        this.cantRespuestasCorrectas = cantRespuestasCorrectas;
+    }
     
     public float calcularPuntajeGeneral(List<Tupla<String,Float>> puntajeTema){
         return 0;

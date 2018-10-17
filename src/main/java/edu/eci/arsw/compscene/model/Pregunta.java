@@ -38,6 +38,14 @@ public abstract class Pregunta {
     private List<String> opcionesDeRespuesta;
     private Timer tiempo;
 
+    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+        this.id = id;
+        this.enunciado = enunciado;
+        this.tema = tema;
+        this.opcionesDeRespuesta = opcionesDeRespuesta;
+        this.tiempo = tiempo;
+    }
+    
     public int getId() {
         return id;
     }

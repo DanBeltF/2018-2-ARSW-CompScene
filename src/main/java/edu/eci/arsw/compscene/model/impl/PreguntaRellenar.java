@@ -35,6 +35,11 @@ public class PreguntaRellenar extends Pregunta{
     
     private List<String> respuestaCorrecta;
 
+    public PreguntaRellenar(List<String> respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+        super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
+
     @Override
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta) {
         return super.validadorRespuesta(respuestaJugador, respuestaCorrecta); //To change body of generated methods, choose Tools | Templates.

@@ -35,6 +35,12 @@ public class Cuestionario {
     private int id;
     private List<Pregunta> preguntas;
     private List<Tripla<String,Boolean,Timer>> respuestas;
+
+    public Cuestionario(int id, List<Pregunta> preguntas, List<Tripla<String, Boolean, Timer>> respuestas) {
+        this.id = id;
+        this.preguntas = preguntas;
+        this.respuestas = respuestas;
+    }
     
     public void generarCuestionario(List<Jugador> jugadores, List<Pregunta> preguntas){
         
