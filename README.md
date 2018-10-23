@@ -20,13 +20,14 @@
 ### :camera: Pantallas de la aplicación
 
 ---
-### :green_book: Instrucciones
+### :book: Instrucciones
 Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador conteste dicha pregunta deberá esperar a que se acabe ese tiempo límite para proceder a la siguiente y para visualizar si su respuesta fue o no correcta, sin embargo internamente se sabrá en cuanto tiempo la respondió y eso será un factor importante a la hora de calcular el puntaje entre los competidores.
 
 ---
 ### :wrench: Tecnologías utilizadas
 [![](img/Java-Logo.png)](https://www.java.com/)
 [![](img/html_css_js.png)](https://blog.hubspot.com/marketing/web-design-html-css-javascript)
+[![](img/mavenLogo.jpg)](https://maven.apache.org/)
 [![](img/axios.png)](https://github.com/axios/axios)
 [![](img/Spring-Logo.png)](https://spring.io/)
 [![](img/astahLogo.png)](http://astah.net/)
