@@ -26,7 +26,6 @@ package edu.eci.arsw.compscene.model;
 import edu.eci.arsw.compscene.persistence.impl.Tripla;
 import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
@@ -57,27 +56,24 @@ public class Jugador {
      * @param respuestas Lista de respuestas que contienen tema, respuesta y el tiempo ejecutado en responder
      * @return  Puntaje de cada jugador por ronda
      */
-    public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
-        float correctas=0;
-        
-        
+    public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Float>> respuestas){
+        float correctas=0; 
         for (int i=0; i<respuestas.size(); i++){
             if(respuestas.get(i).getElem2()==true){
-                correctas+=10;
-                //definir puntaje por tiempo               
-                
-            }
-            
+                correctas+=100;
+                correctas=correctas-respuestas.get(i).getElem3();                
+            }            
         };
         return correctas;
     }
+    
     
     /**
      * Calcula el puntaje del jugador por tema
      * @param respuestas Lista de respuestas que contienen tema, respuesta y el tiempo ejecutado en responder
      * @return Lista de tuplas que contienen los temas y sus respectivos puntajes
      */
-    public List<Tupla<String,Float>> calcularPuntajePorTema(List<Tripla<String,Boolean,Timer>> respuestas){
+    public List<Tupla<String,Float>> calcularPuntajePorTema(List<Tripla<String,Boolean,Float>> respuestas){
         return null;
     }
     
@@ -86,8 +82,8 @@ public class Jugador {
      * @param respuestas
      * @return
      */
-    public Timer calcularTiempoPromedioEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
-        return new Timer();
+    public float calcularTiempoPromedioEspecifico(List<Tripla<String,Boolean,Float>> respuestas){
+        return 0;
     }
     
     /**
