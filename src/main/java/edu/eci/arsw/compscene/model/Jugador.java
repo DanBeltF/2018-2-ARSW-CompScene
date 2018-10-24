@@ -30,7 +30,7 @@ import java.util.Timer;
 
 /**
  *
- * @author dbeltran
+ * @author dcastiblanco
  */
 public class Jugador {
     private int id;
@@ -45,6 +45,11 @@ public class Jugador {
         this.puntajeJugador = puntajeJugador;
     }
     
+    /**
+     * Calcula el puntaje específico del jugador 
+     * @param respuestas Lista de respuestas que contienen tema, respuesta y el tiempo ejecutado en responder
+     * @return  Puntaje de cada jugador por ronda
+     */
     public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
         return 0;
     }
@@ -95,6 +100,11 @@ public class Jugador {
 
     public void setPuntajeJugador(float puntajeJugador) {
         this.puntajeJugador = puntajeJugador;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", password=" + password + ", puntajeJugador=" + puntajeJugador + '}';
     }
     
     
