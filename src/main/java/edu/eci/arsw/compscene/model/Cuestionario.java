@@ -53,7 +53,7 @@ public class Cuestionario {
     public void setId(int id) {
         this.id = id;
     }
-
+    
     public List<Pregunta> getPreguntas() {
         return preguntas;
     }
@@ -68,7 +68,6 @@ public class Cuestionario {
 
     public void setRespuestas(List<Tripla<String,Boolean,Timer>> respuestas) {
         this.respuestas = respuestas;
-    }
-    
+    }    
     
 }

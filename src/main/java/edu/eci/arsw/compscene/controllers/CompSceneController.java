@@ -24,9 +24,15 @@
 package edu.eci.arsw.compscene.controllers;
 
 import edu.eci.arsw.compscene.services.CompSceneServices;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
@@ -35,10 +41,32 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Service
 //@CrossOrigin("*")
-@RestController
+@RestController(value = "/preguntas")
 public class CompSceneController {
     
     @Autowired
     private CompSceneServices compserv;
+    
+    @RequestMapping("/")
+    String index() {
+        return "index";
+    }
+    
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> getPreguntas(){
+        try {
+            
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }      
+    }
+    
+    
     
 }
