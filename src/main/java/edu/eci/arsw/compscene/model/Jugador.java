@@ -38,6 +38,13 @@ public class Jugador {
     private String password;
     private float puntajeJugador;
 
+    /**
+     *
+     * @param id
+     * @param nombre
+     * @param password
+     * @param puntajeJugador
+     */
     public Jugador(int id, String nombre, String password, float puntajeJugador) {
         this.id = id;
         this.nombre = nombre;
@@ -51,53 +58,114 @@ public class Jugador {
      * @return  Puntaje de cada jugador por ronda
      */
     public float calcularPuntajeEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
-        return 0;
+        float correctas=0;
+        
+        
+        for (int i=0; i<respuestas.size(); i++){
+            if(respuestas.get(i).getElem2()==true){
+                correctas+=10;
+                //definir puntaje por tiempo               
+                
+            }
+            
+        };
+        return correctas;
     }
     
+    /**
+     * Calcula el puntaje del jugador por tema
+     * @param respuestas Lista de respuestas que contienen tema, respuesta y el tiempo ejecutado en responder
+     * @return Lista de tuplas que contienen los temas y sus respectivos puntajes
+     */
     public List<Tupla<String,Float>> calcularPuntajePorTema(List<Tripla<String,Boolean,Timer>> respuestas){
         return null;
     }
     
+    /**
+     *
+     * @param respuestas
+     * @return
+     */
     public Timer calcularTiempoPromedioEspecifico(List<Tripla<String,Boolean,Timer>> respuestas){
         return new Timer();
     }
     
+    /**
+     *
+     * @return
+     */
     public float calcularTematicaMasAcertada(){
         return 0;
     }
     
+    /**
+     *
+     * @return
+     */
     public float calcularTematicaMasFallada(){
         return 0;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     *
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getPuntajeJugador() {
         return puntajeJugador;
     }
 
+    /**
+     *
+     * @param puntajeJugador
+     */
     public void setPuntajeJugador(float puntajeJugador) {
         this.puntajeJugador = puntajeJugador;
     }
