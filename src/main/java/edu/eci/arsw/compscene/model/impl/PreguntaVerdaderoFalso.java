@@ -35,14 +35,24 @@ public class PreguntaVerdaderoFalso extends Pregunta{
     
     private int respuestaCorrecta;
 
-    public PreguntaVerdaderoFalso(int respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+    public PreguntaVerdaderoFalso(int respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
         super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
         this.respuestaCorrecta = respuestaCorrecta;
     }
-
+    
     @Override
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta) {
-        return super.validadorRespuesta(respuestaJugador, respuestaCorrecta); //To change body of generated methods, choose Tools | Templates.
+        int respJugador=(int)respuestaJugador;
+        int respCorrecta=(int) respuestaCorrecta;
+        Boolean respuesta=false;
+        List<String> re=getOpcionesDeRespuesta();  
+        
+        if(re.size()<=2){
+            if((re.get(respJugador).equals(re.get(respCorrecta)))&& respJugador==respCorrecta){
+                respuesta=true;
+            }
+        }
+        return respuesta;
     }
 
     @Override
@@ -51,12 +61,12 @@ public class PreguntaVerdaderoFalso extends Pregunta{
     }
 
     @Override
-    public void setTiempo(Timer tiempo) {
+    public void setTiempo(Float tiempo) {
         super.setTiempo(tiempo); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Timer getTiempo() {
+    public Float getTiempo() {
         return super.getTiempo(); //To change body of generated methods, choose Tools | Templates.
     }
 
