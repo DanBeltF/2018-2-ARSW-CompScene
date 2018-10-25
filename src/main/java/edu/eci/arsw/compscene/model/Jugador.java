@@ -61,14 +61,14 @@ public class Jugador {
      * @return Puntaje de cada jugador por ronda
      */
     public float calcularPuntajeEspecifico(List<Tripla<String, Boolean, Float>> respuestas) {
-        float correctas = 0;
+        puntajeJugador= 0;
         for (int i = 0; i < respuestas.size(); i++) {
             if (respuestas.get(i).getElem2() == true) {
-                correctas += 100;
-                correctas = correctas - respuestas.get(i).getElem3();
+                puntajeJugador += 100;
+                puntajeJugador = puntajeJugador - respuestas.get(i).getElem3();
             }
         };
-        return correctas;
+        return puntajeJugador;
     }
 
     
@@ -81,7 +81,7 @@ public class Jugador {
      * puntajes
      */
     public List<Tupla<String, Float>> calcularPuntajePorTema(List<Tripla<String, Boolean, Float>> respuestas) {
-        List<Tupla<String, Float>> puntajeTemas = new CopyOnWriteArrayList<Tupla<String, Float>>();
+        List<Tupla<String, Float>> puntajeTemas = new CopyOnWriteArrayList<>();
         Tupla<String, Float> matematica; 
         Tupla<String, Float> logica;
         Tupla<String, Float> programacion;
@@ -110,8 +110,12 @@ public class Jugador {
                     break;
             }
         }
-        //Agregar puntajes y temas a la tuplas respectivas
-        //Agregar tuplas a las lista puntajeTemas
+        matematica = new Tupla("Matemática",correctaMate);
+        logica = new Tupla("Lógica",correctaLogi);
+        programacion = new Tupla("Programación",correctaProg);
+        puntajeTemas.add(matematica);
+        puntajeTemas.add(logica);
+        puntajeTemas.add(programacion);
 
         return puntajeTemas;
     }
@@ -138,6 +142,7 @@ public class Jugador {
      * @return
      */
     public float calcularTematicaMasAcertada() {
+        //Corregir Deberia entrarle un parametro y retornar el tema y puntaje
         return 0;
     }
 
@@ -146,19 +151,21 @@ public class Jugador {
      * @return
      */
     public float calcularTematicaMasFallada() {
+        //Corregir deberia entrar un parametro y retornar tema mas fallada con su puntaje
         return 0;
     }
 
+    
     /**
-     *
-     * @return
+     * Obtiene el id del jugador
+     * @return Id del jugador
      */
     public int getId() {
         return id;
     }
 
     /**
-     *
+     * Configura el id del jugador
      * @param id
      */
     public void setId(int id) {
@@ -166,15 +173,15 @@ public class Jugador {
     }
 
     /**
-     *
-     * @return
+     * Obtiene el nombre del jugador
+     * @return Nombre de jugador
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     *
+     * Configura el nombre del jugador
      * @param nombre
      */
     public void setNombre(String nombre) {
@@ -182,15 +189,15 @@ public class Jugador {
     }
 
     /**
-     *
-     * @return
+     * Obtiene el password del jugador
+     * @return Password del jugador
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     *
+     * Configura el password de jugador
      * @param password
      */
     public void setPassword(String password) {
@@ -198,15 +205,15 @@ public class Jugador {
     }
 
     /**
-     *
-     * @return
+     * Obtiene el puntaje del jugador
+     * @return Puntaje del jugador
      */
     public float getPuntajeJugador() {
         return puntajeJugador;
     }
 
     /**
-     *
+     * Configura puntaje de jugador
      * @param puntajeJugador
      */
     public void setPuntajeJugador(float puntajeJugador) {
