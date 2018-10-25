@@ -23,6 +23,7 @@
  */
 package edu.eci.arsw.compscene.services;
 
+import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
 import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
 import edu.eci.arsw.compscene.model.impl.PreguntaVerdaderoFalso;
@@ -45,72 +46,89 @@ public class CompSceneServicesStub implements CompSceneServices {
 
     @Override
     public void addPreguntaRellenar(PreguntaRellenar nueva_pregunta_rellenar) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (listaPreguntas.contains(nueva_pregunta_rellenar)) {
+            throw new CompSceneServicesException("La pregunta de rellenar ya existe: " + nueva_pregunta_rellenar.getEnunciado());
+        }
+        listaPreguntas.add(nueva_pregunta_rellenar);
     }
 
     @Override
     public void addPreguntaSeleccion(PreguntaSeleccionMultiple nueva_pregunta_seleccion) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (listaPreguntas.contains(nueva_pregunta_seleccion)) {
+            throw new CompSceneServicesException("La pregunta de seleccion multiple ya existe: " + nueva_pregunta_seleccion.getEnunciado());
+        }
+        listaPreguntas.add(nueva_pregunta_seleccion);
     }
 
     @Override
     public void addPreguntaVerdaderoFalso(PreguntaVerdaderoFalso nueva_pregunta_verdadero_falso) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (listaPreguntas.contains(nueva_pregunta_verdadero_falso)) {
+            throw new CompSceneServicesException("La pregunta verdadero falso ya existe: " + nueva_pregunta_verdadero_falso.getEnunciado());
+        }
+        listaPreguntas.add(nueva_pregunta_verdadero_falso);
     }
 
     @Override
     public PreguntaRellenar getPreguntaRellenar() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!listaPreguntas.contains(pr)) {
+            throw new CompSceneServicesException("La pregunta de rellenar no existe: " + pr.getEnunciado());
+        }
+        return pr;
     }
 
     @Override
     public PreguntaSeleccionMultiple getPreguntaSeleccion() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!listaPreguntas.contains(psm)) {
+            throw new CompSceneServicesException("La pregunta de seleccion multiple no existe: " + psm.getEnunciado());
+        }
+        return psm;
     }
 
     @Override
     public PreguntaVerdaderoFalso getPreguntaVerdaderoFalso() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!listaPreguntas.contains(pvf)) {
+            throw new CompSceneServicesException("La pregunta de verdadero falso no existe: " + pvf.getEnunciado());
+        }
+        return pvf;
     }
 
     @Override
     public void deletePreguntaRellenar(PreguntaRellenar pregunta_rellenar) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!listaPreguntas.contains(pregunta_rellenar)){
+            throw new CompSceneServicesException("La pregunta de rellenar no existe: " + pregunta_rellenar.getEnunciado());
+        }
+        listaPreguntas.remove(pregunta_rellenar);
     }
 
     @Override
     public void deletePreguntaSeleccion(PreguntaSeleccionMultiple pregunta_seleccion) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!listaPreguntas.contains(pregunta_seleccion)){
+            throw new CompSceneServicesException("La pregunta de seleccion multiple no existe: " + pregunta_seleccion.getEnunciado());
+        }
+        listaPreguntas.remove(pregunta_seleccion);
     }
 
     @Override
     public void deletePreguntaVerdaderoFalso(PreguntaVerdaderoFalso pregunta_verdadero_falso) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(!listaPreguntas.contains(pregunta_verdadero_falso)){
+            throw new CompSceneServicesException("La pregunta de verdadero falso no existe: " + pregunta_verdadero_falso.getEnunciado());
+        }
+        listaPreguntas.remove(pregunta_verdadero_falso);
     }
 
-    @Override
-    public void addTema(String nuevoTema) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getTema() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void deleteTema(String tema) throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<Tripla<String, Boolean, Float>> getRespuestas() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return respuestas;
     }
 
     @Override
     public float getPuntaje() throws CompSceneServicesException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float puntajetotal=0;
+        for(int i=0;i<puntaje.size();i++){
+            puntajetotal+=puntaje.get(i);
+        }
+        return puntajetotal;
     }
     
     private static final List<Tripla<String, Boolean, Float>> respuestas;
@@ -119,29 +137,45 @@ public class CompSceneServicesStub implements CompSceneServices {
     private static final List<String> respuestaCorrectaRellenar;
     private static final List<String> opcionesRespuestaSeleccion;
     private static final List<String> opcionesRespuestaVF;
-
+    private static final PreguntaRellenar pr;
+    private static final PreguntaSeleccionMultiple psm;
+    private static final PreguntaVerdaderoFalso pvf;
+    private static final List<Pregunta> listaPreguntas;
+    private static final List<Float> puntaje;
+    
     static {
         respuestas = new CopyOnWriteArrayList<>();
+        listaPreguntas= new CopyOnWriteArrayList<>();
+        puntaje= new CopyOnWriteArrayList<>();
+        
         respuestaCorrectaRellenar= new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar.add("2");
-        PreguntaRellenar pr = new PreguntaRellenar(respuestaCorrectaRellenar,1,"Raiz cuadrada de 4: ", "Matemática", null, 6.7f);
+        pr = new PreguntaRellenar(respuestaCorrectaRellenar,1,"Raiz cuadrada de 4: ", "Matemática", null, 6.7f);
         
         opcionesRespuestaSeleccion= new CopyOnWriteArrayList<>();
         opcionesRespuestaSeleccion.add("13");
         opcionesRespuestaSeleccion.add("76");
         opcionesRespuestaSeleccion.add("32");
         opcionesRespuestaSeleccion.add("65");
-        PreguntaSeleccionMultiple psm = new PreguntaSeleccionMultiple(13,1,"8 + 5 =: ", "Matemática", opcionesRespuestaSeleccion, 3.5f);
+        psm = new PreguntaSeleccionMultiple(13,1,"8 + 5 =: ", "Matemática", opcionesRespuestaSeleccion, 3.5f);
         
         opcionesRespuestaVF= new CopyOnWriteArrayList<>();
         opcionesRespuestaVF.add("91");
-        PreguntaVerdaderoFalso pvf = new PreguntaVerdaderoFalso(91,1,"9 elevado al cuadrado= ", "Matemática", opcionesRespuestaVF, 2.9f);
+        pvf = new PreguntaVerdaderoFalso(91,1,"9 elevado al cuadrado= ", "Matemática", opcionesRespuestaVF, 2.9f);
+        
+        listaPreguntas.add(pr);
+        listaPreguntas.add(psm);
+        listaPreguntas.add(pvf);
         
         respuesta1 = new Tripla("Matemática",true,6.7f);
         respuesta2 = new Tripla("Lógica",false,8.2f);
         
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
+        
+        for(int i=0;i<respuestas.size();i++){
+            puntaje.add(respuestas.get(i).getElem3());
+        }
     }
     
 }
