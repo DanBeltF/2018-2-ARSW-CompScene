@@ -54,14 +54,7 @@ public interface CompSceneServices {
     void deletePreguntaSeleccion(PreguntaSeleccionMultiple pregunta_seleccion) throws CompSceneServicesException;
     
     void deletePreguntaVerdaderoFalso(PreguntaVerdaderoFalso pregunta_verdadero_falso) throws CompSceneServicesException;
-    
-
-    void addTema(String nuevoTema) throws CompSceneServicesException;
-    
-    String getTema() throws CompSceneServicesException;
-    
-    void deleteTema(String tema) throws CompSceneServicesException;
-    
+        
     
     List<Tripla<String,Boolean,Float>> getRespuestas() throws CompSceneServicesException;
     
