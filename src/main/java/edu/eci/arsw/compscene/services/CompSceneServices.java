@@ -23,10 +23,50 @@
  */
 package edu.eci.arsw.compscene.services;
 
+import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
+import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
+import edu.eci.arsw.compscene.model.impl.PreguntaVerdaderoFalso;
+import edu.eci.arsw.compscene.persistence.impl.Tripla;
+import java.util.List;
+
 /**
  *
- * @author dbeltran
+ * @author dcastiblanco
  */
 public interface CompSceneServices {
+    
+    void addPreguntaRellenar(PreguntaRellenar nueva_pregunta_rellenar) throws CompSceneServicesException;
+    
+    void addPreguntaSeleccion(PreguntaSeleccionMultiple nueva_pregunta_seleccion) throws CompSceneServicesException;
+    
+    void addPreguntaVerdaderoFalso(PreguntaVerdaderoFalso nueva_pregunta_verdadero_falso) throws CompSceneServicesException;
+    
+    
+    PreguntaRellenar getPreguntaRellenar() throws CompSceneServicesException;
+    
+    PreguntaSeleccionMultiple getPreguntaSeleccion() throws CompSceneServicesException;
+    
+    PreguntaVerdaderoFalso getPreguntaVerdaderoFalso() throws CompSceneServicesException;
+    
+    
+    void deletePreguntaRellenar(PreguntaRellenar pregunta_rellenar) throws CompSceneServicesException;
+    
+    void deletePreguntaSeleccion(PreguntaSeleccionMultiple pregunta_seleccion) throws CompSceneServicesException;
+    
+    void deletePreguntaVerdaderoFalso(PreguntaVerdaderoFalso pregunta_verdadero_falso) throws CompSceneServicesException;
+    
+
+    void addTema(String nuevoTema) throws CompSceneServicesException;
+    
+    String getTema() throws CompSceneServicesException;
+    
+    void deleteTema(String tema) throws CompSceneServicesException;
+    
+    
+    List<Tripla<String,Boolean,Float>> getRespuestas() throws CompSceneServicesException;
+    
+    float getPuntaje() throws CompSceneServicesException;
+    
+
     
 }
