@@ -23,6 +23,7 @@
  */
 package edu.eci.arsw.compscene.test;
 
+import edu.eci.arsw.compscene.model.Cuestionario;
 import edu.eci.arsw.compscene.services.CompSceneServices;
 import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.logging.Level;
@@ -53,4 +54,9 @@ public class CompScenceServicesTests {
     public void contextLoads() throws CompSceneServicesException {
     }
     
+    @Test
+    public void debeCrearCuestionario() throws CompSceneServicesException {
+       
+        
+    }
 }
