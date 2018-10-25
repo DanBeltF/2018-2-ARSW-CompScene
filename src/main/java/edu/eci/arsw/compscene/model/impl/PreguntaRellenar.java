@@ -49,11 +49,11 @@ public class PreguntaRellenar extends Pregunta{
      * @param opcionesDeRespuesta   Las respuestas del Usuario.
      * @param tiempo    El tiempo que se tomo el usuario en responder.
      */
-    public PreguntaRellenar(List<String> respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+    public PreguntaRellenar(List<String> respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
         super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
         this.respuestaCorrecta = respuestaCorrecta;
     }
-
+    
     /**
      *Validador de Respuesta
      * <p>Use {@link #.Valida la respuesta del usuario con las respuestas.* 
@@ -101,7 +101,7 @@ public class PreguntaRellenar extends Pregunta{
      * @param tiempo El tiempo del usuario en responder una pregunta.
      */
     @Override
-    public void setTiempo(Timer tiempo) {
+    public void setTiempo(Float tiempo) {
         super.setTiempo(tiempo); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -112,7 +112,7 @@ public class PreguntaRellenar extends Pregunta{
      * @return El tiempo del usuario.
      */
     @Override
-    public Timer getTiempo() {
+    public Float getTiempo() {
         return super.getTiempo(); //To change body of generated methods, choose Tools | Templates.
     }
 
