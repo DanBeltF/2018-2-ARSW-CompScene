@@ -24,6 +24,7 @@
 package edu.eci.arsw.compscene.controllers;
 
 import edu.eci.arsw.compscene.services.CompSceneServices;
+import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
@@ -47,26 +48,52 @@ public class CompSceneController {
     @Autowired
     private CompSceneServices compserv;
     
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     String index() {
-        return "index";
+        //return "index";
+    }*/
+    
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
+    public ResponseEntity<?> getPreguntaSeleccion(){
+        try {
+            return new ResponseEntity<>(compserv.getPreguntaSeleccion(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
     }
     
     /**
      *
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> getPreguntas(){
+    @RequestMapping(method = RequestMethod.GET,path = "/preguntas/pvf")
+    public ResponseEntity<?> getPreguntaVerdaderoFalso(){
         try {
-            
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+            return new ResponseEntity<>(compserv.getPreguntaVerdaderoFalso(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
-        }      
+        }
     }
     
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/pr")
+    public ResponseEntity<?> getPreguntaRellenar(){
+        try {
+            return new ResponseEntity<>(compserv.getPreguntaRellenar(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
     
     
 }
