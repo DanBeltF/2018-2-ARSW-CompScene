@@ -25,7 +25,6 @@ package edu.eci.arsw.compscene.model;
 
 import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
@@ -49,36 +48,50 @@ public class Resultado {
      * @return Puntaje general por tema
      */
     public float calcularPuntajeGeneral(List<Tupla<String,Float>> puntajeTema){
+        float puntajeGeneral=0;
         for(int i=0; i<puntajeTema.size(); i++){
-            
+            puntajeGeneral+=puntajeTema.get(i).getElem2();
         }
-        return 0;
+        return puntajeGeneral;
     }
     
+    
     /**
-     *
+     * Calcula el tiempo promedio de respuesta general
      * @param tiempos
-     * @return
+     * @return Tiempo promedio de respuesta general
      */
-    public Timer calcularTiempoPromedioRespuestaGeneral(List<Timer> tiempos){
-        return new Timer();
+    public float calcularTiempoPromedioRespuestaGeneral(List<Float> tiempos){
+        float total=0;
+        for (int i=0; i<tiempos.size();i++){
+            total+=tiempos.get(i);
+        }
+        float promedio = total/tiempos.size();
+        return promedio;
     }
+    
 
     /**
-     *
-     * @return
-     */
+     * Obtiene las respuestas correctas
+     * @return Respuestas correctas
+     */ 
     public int getCantRespuestasCorrectas() {
         return cantRespuestasCorrectas;
     }
 
     /**
-     *
+     * Configura respuestas correctas
      * @param cantRespuestasCorrectas
      */
     public void setCantRespuestasCorrectas(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
     }
+
+    @Override
+    public String toString() {
+        return "Resultado{" + "cantRespuestasCorrectas=" + cantRespuestasCorrectas + '}';
+    }
+    
     
     
 }
