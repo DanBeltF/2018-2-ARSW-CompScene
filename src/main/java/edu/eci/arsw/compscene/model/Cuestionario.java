@@ -25,7 +25,8 @@ package edu.eci.arsw.compscene.model;
 
 import edu.eci.arsw.compscene.persistence.impl.Tripla;
 import java.util.List;
-import java.util.Timer;
+import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
@@ -33,40 +34,101 @@ import java.util.Timer;
  */
 public class Cuestionario {
     private int id;
+    private List<Jugador> jugadores;
     private List<Pregunta> preguntas;
-    private List<Tripla<String,Boolean,Timer>> respuestas;
+    private List<Tripla<String,Boolean,Float>> respuestas;
 
-    public Cuestionario(int id, List<Pregunta> preguntas, List<Tripla<String, Boolean, Timer>> respuestas) {
+    /**
+     * Constructor del cuestionario
+     * 
+     * @param id
+     * @param preguntas
+     * @param jugadores
+     * @param respuestas
+     */
+    public Cuestionario(int id, List<Pregunta> preguntas, List<Jugador> jugadores,List<Tripla<String, Boolean, Float>> respuestas) {
         this.id = id;
+        this.jugadores = jugadores;
         this.preguntas = preguntas;
         this.respuestas = respuestas;
     }
     
+    /**
+     * Genera un cuestionario
+     * <p>A base de los jugadores y las preguntas</p>
+     * @param jugadores
+     * @param preguntas
+     */
     public void generarCuestionario(List<Jugador> jugadores, List<Pregunta> preguntas){
-        
+        this.preguntas = new CopyOnWriteArrayList<>();
+        for (int i = 0; i < 5; i++){
+            Random randomizer = new Random();
+            Pregunta random = preguntas.get(randomizer.nextInt(preguntas.size()));
+            this.preguntas.add(random);
+        }        
     }
 
+    /**
+     *
+     * @return los jugadores
+     */
+    public List<Jugador> getJugadores() {
+        return jugadores;
+    }
+
+    /**
+     *
+     * @param jugadores - cambia jugadores
+     */
+    public void setJugadores(List<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+
+    /**
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id - identificador 
+     */
     public void setId(int id) {
         this.id = id;
     }
     
+    /**
+     *
+     * @return preguntas
+     */
     public List<Pregunta> getPreguntas() {
         return preguntas;
     }
 
+    /**
+     *
+     * @param preguntas - cambia preguntas
+     */
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
     }
 
-    public List<Tripla<String,Boolean,Timer>> getRespuestas() {
+    /**
+     *
+     * @return respuestas hechas como: tema, correcta/incorrecta, puntaje
+     */
+    public List<Tripla<String,Boolean,Float>> getRespuestas() {
         return respuestas;
     }
 
-    public void setRespuestas(List<Tripla<String,Boolean,Timer>> respuestas) {
+    /**
+     *
+     * @param respuestas
+     */
+    public void setRespuestas(List<Tripla<String,Boolean,Float>> respuestas) {
         this.respuestas = respuestas;
     }    
     
