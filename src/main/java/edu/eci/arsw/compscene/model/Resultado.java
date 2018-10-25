@@ -29,27 +29,53 @@ import java.util.Timer;
 
 /**
  *
- * @author dbeltran
+ * @author dcastiblanco
  */
 public class Resultado {
     private int cantRespuestasCorrectas;
 
+    /**
+     * Constructor de resultado
+     * @param cantRespuestasCorrectas
+     */
     public Resultado(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
     }
     
+    
+    /**
+     * Calcula el puntaje general por tema, obtenido por todos los jugadores
+     * @param puntajeTema Lista de puntajes de cada jugador por tema
+     * @return Puntaje general por tema
+     */
     public float calcularPuntajeGeneral(List<Tupla<String,Float>> puntajeTema){
+        for(int i=0; i<puntajeTema.size(); i++){
+            
+        }
         return 0;
     }
     
+    /**
+     *
+     * @param tiempos
+     * @return
+     */
     public Timer calcularTiempoPromedioRespuestaGeneral(List<Timer> tiempos){
         return new Timer();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getCantRespuestasCorrectas() {
         return cantRespuestasCorrectas;
     }
 
+    /**
+     *
+     * @param cantRespuestasCorrectas
+     */
     public void setCantRespuestasCorrectas(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
     }

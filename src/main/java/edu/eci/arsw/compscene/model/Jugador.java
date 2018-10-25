@@ -38,6 +38,7 @@ public class Jugador {
     private String nombre;
     private String password;
     private float puntajeJugador;
+    private List<Tupla<String, Float>> puntajeTemas;
 
     /**
      *
@@ -45,13 +46,15 @@ public class Jugador {
      * @param nombre
      * @param password
      * @param puntajeJugador
+     * @param puntajeTemas
      */
-    public Jugador(int id, String nombre, String password, float puntajeJugador) {
+    public Jugador(int id, String nombre, String password, float puntajeJugador, List<Tupla<String, Float>> puntajeTemas) {
         this.id = id;
         this.nombre = nombre;
         this.password = password;
         this.puntajeJugador = puntajeJugador;
-    }
+        this.puntajeTemas = puntajeTemas;
+    }   
 
     /**
      * Calcula el puntaje específico del jugador
@@ -81,7 +84,7 @@ public class Jugador {
      * puntajes
      */
     public List<Tupla<String, Float>> calcularPuntajePorTema(List<Tripla<String, Boolean, Float>> respuestas) {
-        List<Tupla<String, Float>> puntajeTemas = new CopyOnWriteArrayList<>();
+        puntajeTemas = new CopyOnWriteArrayList<>();
         Tupla<String, Float> matematica; 
         Tupla<String, Float> logica;
         Tupla<String, Float> programacion;
@@ -94,8 +97,7 @@ public class Jugador {
                     if (respuestas.get(i).getElem2() == true) {
                         correctaMate += 100;
                         correctaMate = correctaMate - respuestas.get(i).getElem3();
-                    }   break;
-            
+                    }   break;            
                 case "Lógica":
                     if (respuestas.get(i).getElem2() == true) {
                         correctaLogi += 100;
@@ -138,21 +140,43 @@ public class Jugador {
 
     
     /**
-     *
-     * @return
+     * Calcula la tematica mas acertada es decir el tema con mayor puntaje
+     * @return El tema con el puntaje mayor
      */
-    public float calcularTematicaMasAcertada() {
-        //Corregir Deberia entrarle un parametro y retornar el tema y puntaje
-        return 0;
+    public Tupla<String, Float> calcularTematicaMasAcertada() {
+        List<Tupla<String, Float>> puntajeTemas = new CopyOnWriteArrayList<>();
+        puntajeTemas = this.getPuntajeTemas();
+        Tupla<String, Float> temaMasAcertado;
+        float mayor = 0;
+        String tema = null;
+        for(int i=0;i<puntajeTemas.size();i++){
+            if(puntajeTemas.get(i).getElem2()>mayor){
+                mayor=puntajeTemas.get(i).getElem2();
+                tema=puntajeTemas.get(i).getElem1();
+            }            
+        }
+        temaMasAcertado=new Tupla(tema,mayor);
+        return temaMasAcertado;
     }
 
     /**
-     *
-     * @return
+     * Calcula la tematica mas fallada es decir la que tiene menor puntaje
+     * @return El tema con el menor puntaje
      */
-    public float calcularTematicaMasFallada() {
-        //Corregir deberia entrar un parametro y retornar tema mas fallada con su puntaje
-        return 0;
+    public Tupla<String, Float> calcularTematicaMasFallada() {
+        List<Tupla<String, Float>> puntajeTemas = new CopyOnWriteArrayList<>();
+        puntajeTemas = this.getPuntajeTemas();
+        Tupla<String, Float> temaMasFallado;
+        float menor = 10000;
+        String tema = null;
+        for(int i=0;i<puntajeTemas.size();i++){
+            if(puntajeTemas.get(i).getElem2()<menor){
+                menor=puntajeTemas.get(i).getElem2();
+                tema=puntajeTemas.get(i).getElem1();
+            }            
+        }
+        temaMasFallado=new Tupla(tema,menor);
+        return temaMasFallado;
     }
 
     
@@ -218,6 +242,22 @@ public class Jugador {
      */
     public void setPuntajeJugador(float puntajeJugador) {
         this.puntajeJugador = puntajeJugador;
+    }
+    
+    /**
+     * Obtiene el puntaje por temas
+     * @return Puntaje por temas
+     */
+    public List<Tupla<String, Float>> getPuntajeTemas() {
+        return puntajeTemas;
+    }
+
+    /**
+     * Configura puntaje temas
+     * @param puntajeTemas
+     */
+    public void setPuntajeTemas(List<Tupla<String, Float>> puntajeTemas) {
+        this.puntajeTemas = puntajeTemas;
     }
 
     @Override
