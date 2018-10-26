@@ -1,5 +1,12 @@
-target
-./target
+/target/generated-sources
+/target/generated-test-sources
+/target/javadoc-bundle-options
+/target/maven-archiver
+/target/classes
+/target/maven-archiver
+/target/maven-status
+/target/surefire-reports
+/target/test-classes
 !.mvn/wrapper/maven-wrapper.jar
 
 
@@ -22,7 +29,6 @@ idea
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
 

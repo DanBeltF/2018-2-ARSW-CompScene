@@ -24,7 +24,6 @@
 package edu.eci.arsw.compscene.model;
 
 import java.util.List;
-import java.util.Timer;
 
 /**
  *

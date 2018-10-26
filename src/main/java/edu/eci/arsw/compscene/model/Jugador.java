@@ -41,7 +41,8 @@ public class Jugador {
     private List<Tupla<String, Float>> puntajeTemas;
 
     /**
-     *
+     * Constructor
+     * 
      * @param id
      * @param nombre
      * @param password
@@ -190,7 +191,7 @@ public class Jugador {
 
     /**
      * Configura el id del jugador
-     * @param id
+     * @param id - identificador
      */
     public void setId(int id) {
         this.id = id;
@@ -206,7 +207,7 @@ public class Jugador {
 
     /**
      * Configura el nombre del jugador
-     * @param nombre
+     * @param nombre - nombre jugador
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -222,7 +223,7 @@ public class Jugador {
 
     /**
      * Configura el password de jugador
-     * @param password
+     * @param password - credencial
      */
     public void setPassword(String password) {
         this.password = password;
@@ -238,7 +239,7 @@ public class Jugador {
 
     /**
      * Configura puntaje de jugador
-     * @param puntajeJugador
+     * @param puntajeJugador - puntaje obtenido en la sesion
      */
     public void setPuntajeJugador(float puntajeJugador) {
         this.puntajeJugador = puntajeJugador;
@@ -254,7 +255,7 @@ public class Jugador {
 
     /**
      * Configura puntaje temas
-     * @param puntajeTemas
+     * @param puntajeTemas - puntaje segun tema
      */
     public void setPuntajeTemas(List<Tupla<String, Float>> puntajeTemas) {
         this.puntajeTemas = puntajeTemas;

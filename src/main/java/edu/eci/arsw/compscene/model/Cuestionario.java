@@ -86,7 +86,7 @@ public class Cuestionario {
 
     /**
      *
-     * @return id
+     * @return id - id del cuestionario
      */
     public int getId() {
         return id;
@@ -102,7 +102,7 @@ public class Cuestionario {
     
     /**
      *
-     * @return preguntas
+     * @return preguntas - lista de preguntas a generar
      */
     public List<Pregunta> getPreguntas() {
         return preguntas;
@@ -126,7 +126,7 @@ public class Cuestionario {
 
     /**
      *
-     * @param respuestas
+     * @param respuestas - cambia respuestas
      */
     public void setRespuestas(List<Tripla<String,Boolean,Float>> respuestas) {
         this.respuestas = respuestas;

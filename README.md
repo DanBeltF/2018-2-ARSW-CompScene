@@ -15,9 +15,38 @@
 - Daniel E. Castiblanco Rocha
 - Cesar E. Lanos Camacho
 ### Profesor
-- Santiago Carrillo Barbosa
+- Luis Daniel Benavides Navarro
+---
+### :link: URLs
+|                Elemento               |                                                 Link                                                 |
+|:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+|         Propuesta de proyecto         | https://docs.google.com/document/d/1K1JDaow5Tx50JQjSpznRKCyIFm_KJOQI2qhBrM3IMqQ/edit?usp=sharing     |
+|                 Trello                | https://trello.com/b/jBTv83Tq/arsw-2018-2-historias-compscene                                        |
+|               NinjaMock               | https://ninjamock.com/s/JKFVVTx                                                                      |
+|          Backlog de producto          | https://docs.google.com/spreadsheets/d/1KDiZdkcWTnHBWtftqC7oe6yVvaTo-bsEyzWVGUkCb-4/edit?usp=sharing |
+| Documento de Arquitectura del Sistema | https://drive.google.com/open?id=1v80f1kmaeB-Irwnzg7KMCXpx6v5byPgE7osgPUxiw1Y                        |
+
 ---
 ### :camera: Pantallas de la aplicación
+![](img/pantalla1.png)
+![](img/pantalla2.png)
+![](img/pantalla3.png)
+![](img/pantalla4.png)
+![](img/pantalla5.png)
+
+---
+
+### :triangular_ruler: Diseño de arquitectura 
+#### Paquetes
+![](img/CompScene-Paquetes.png)
+#### Clases
+![](img/CompScene-Clases.png)
+#### Despliegue
+![](img/CompScene-Despliegue.png)
+#### Secuencia
+![](img/CompScene-Secuencia.png)
+#### Casos de uso
+![](img/CompScene-CasosDeUso.png)
 
 ---
 ### :book: Instrucciones

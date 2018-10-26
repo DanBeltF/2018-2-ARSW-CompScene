@@ -35,7 +35,7 @@ public class Resultado {
 
     /**
      * Constructor de resultado
-     * @param cantRespuestasCorrectas
+     * @param cantRespuestasCorrectas - cantidad de respuestas correctas por todos los usuarios
      */
     public Resultado(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
@@ -58,7 +58,7 @@ public class Resultado {
     
     /**
      * Calcula el tiempo promedio de respuesta general
-     * @param tiempos
+     * @param tiempos - tiempos tomados por cada usuario
      * @return Tiempo promedio de respuesta general
      */
     public float calcularTiempoPromedioRespuestaGeneral(List<Float> tiempos){
@@ -81,7 +81,7 @@ public class Resultado {
 
     /**
      * Configura respuestas correctas
-     * @param cantRespuestasCorrectas
+     * @param cantRespuestasCorrectas - cantidad de respuestas correctas por el grupo
      */
     public void setCantRespuestasCorrectas(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;

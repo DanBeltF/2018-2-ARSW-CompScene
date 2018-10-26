@@ -26,7 +26,6 @@ package edu.eci.arsw.compscene.model.impl;
 import edu.eci.arsw.compscene.model.Pregunta;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
@@ -40,7 +39,7 @@ public class PreguntaRellenar extends Pregunta{
     /**
      *Preguntas a Rellenar
      * 
-     * <p>Use {@link #Sirve para almacenar las respuestas que son escritas por el usuario.*
+     * <p>Sirve para almacenar las respuestas que son escritas por el usuario.</p>
      * 
      * @param respuestaCorrecta La respuesta correcta de la pregunta.  
      * @param id    El id de la pregunta.
@@ -56,7 +55,7 @@ public class PreguntaRellenar extends Pregunta{
     
     /**
      *Validador de Respuesta
-     * <p>Use {@link #.Valida la respuesta del usuario con las respuestas.* 
+     * <p>Valida la respuesta del usuario con las respuestas.</p>
      * @param respuestaJugador  El arrreglo de respuestas del usuario.
      * @param respuestaCorrecta El arreglo de respuestas correctas.
      * @return Un Booleano con el valor true o false si el usuario se a equivocado.
@@ -87,7 +86,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *GetRespuestaJugador
-     * <p>Use {@link #Sirve para devolver las respuestas que son escritas por el usuario.*
+     * <p>Sirve para devolver las respuestas que son escritas por el usuario.</p>
      * @return Una lista con las respuestas del usuario.
      */
     @Override
@@ -97,7 +96,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *SetTeimpo
-     * <p>Use {@link #Asigna un valor al tiempo del usuario..*
+     * <p>Asigna un valor al tiempo del usuario.</p>
      * @param tiempo El tiempo del usuario en responder una pregunta.
      */
     @Override
@@ -107,7 +106,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getTiempo
-     * <p>Use {@link #Sirve para retornar el tiempo que el usuario a tomado para responder la pregunta*
+     * <p>Sirve para retornar el tiempo que el usuario a tomado para responder la pregunta</p>
      * 
      * @return El tiempo del usuario.
      */
@@ -118,7 +117,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *
-     * <p>Use {@link #Sirve para almacenar las respuestas correctas de las preguntas.*
+     * <p>Sirve para almacenar las respuestas correctas de las preguntas.</p>
      * 
      * @param opcionesDeRespuesta  Asigna las respuestas correctas de las preguntas.
      */
@@ -129,7 +128,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getOpciones de respuesta
-     * <p>Use {@link #Sirve Devolver las respuestas correctas de las preguntas.*
+     * <p>Sirve Devolver las respuestas correctas de las preguntas.</p>
      * @return Una lista de String con las opciones correctas de las preguntas.
      */
     @Override
@@ -139,7 +138,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *setTema
-     * <p>Use {@link #Establece un tema para una pregunta. *
+     * <p>Establece un tema para una pregunta.</p>
      * @param tema El tema de la pregunta.
      */
     @Override
@@ -149,7 +148,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getTema
-     * <p>Use {@link #Regresa el tema de la pregunta.*
+     * <p>Regresa el tema de la pregunta.</p>
      * @return Un string con el tema de la pregunta.
      */
     @Override
@@ -159,7 +158,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *setEnunciado
-     * <p>Use {@link #Sirve para almacenar el enunciado de la pregunta.* 
+     * <p>Sirve para almacenar el enunciado de la pregunta.</p>
      * 
      * @param enunciado Es un string con el enunciado de la preguntado.
      */
@@ -170,7 +169,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getEnunciado
-     * <p>Use {@link #Sirve para obtener el enunciado de la pregunta.*
+     * <p>Sirve para obtener el enunciado de la pregunta.</p>
      * 
      * @return Un string con el enunciado de la pregunta.
      */
@@ -181,7 +180,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *setId
-     * <p>Use {@link #.Sirve para establecer un id a la pregunta*
+     * <p>Sirve para establecer un id a la pregunta</p>
      * 
      * @param id Un entero que representa el identificador de la pregunta.
      */
@@ -192,7 +191,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getId
-     * <p>Use {@link #Sirve para regresar el identificador de la pregunta.*
+     * <p>Sirve para regresar el identificador de la pregunta.</p>
      * @return un entero con el identificador de la pregunta.
      */
     @Override
@@ -202,7 +201,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *getRespuestaCorrecta
-     * <p>Use {@link # Regresa la lista de respuestas correctas.* 
+     * <p>Regresa la lista de respuestas correctas.</p>
      * 
      * @return Retorna una lista de String con la lista de respuesta correctas.
      */
@@ -212,7 +211,7 @@ public class PreguntaRellenar extends Pregunta{
 
     /**
      *setRespuestaCorrecta
-     * <p>Use {@link #Sirve para almacenar las respuestas correctas del cuestionario. *
+     * <p>Sirve para almacenar las respuestas correctas del cuestionario.</p>
      * 
      * @param respuestaCorrecta Una lista con las respuestas correctas del cuestionario.
      */

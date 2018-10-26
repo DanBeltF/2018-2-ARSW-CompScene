@@ -48,14 +48,9 @@ public class CompSceneController {
     @Autowired
     private CompSceneServices compserv;
     
-    /*@RequestMapping("/")
-    String index() {
-        //return "index";
-    }*/
-    
     /**
      *
-     * @return
+     * @return la pregunta de seleccion multiple como CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
     public ResponseEntity<?> getPreguntaSeleccion(){
@@ -69,7 +64,7 @@ public class CompSceneController {
     
     /**
      *
-     * @return
+     * @return la pregunta de verdadero o falso como CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET,path = "/preguntas/pvf")
     public ResponseEntity<?> getPreguntaVerdaderoFalso(){
@@ -83,7 +78,7 @@ public class CompSceneController {
     
     /**
      *
-     * @return
+     * @return la pregunta de rellenar como CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/pr")
     public ResponseEntity<?> getPreguntaRellenar(){

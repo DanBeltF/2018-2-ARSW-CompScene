@@ -1,0 +1,6 @@
+edu.eci.arsw.compscene
+edu.eci.arsw.compscene.controllers
+edu.eci.arsw.compscene.model
+edu.eci.arsw.compscene.model.impl
+edu.eci.arsw.compscene.persistence.impl
+edu.eci.arsw.compscene.services

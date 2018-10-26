@@ -25,7 +25,6 @@ package edu.eci.arsw.compscene.model.impl;
 
 import edu.eci.arsw.compscene.model.Pregunta;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
