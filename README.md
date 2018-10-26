@@ -24,7 +24,7 @@
 | Trello | https://trello.com/b/jBTv83Tq/arsw-2018-2-historias-compscene |
 | NinjaMock | https://ninjamock.com/s/JKFVVTx |
 | Backlog de producto | https://docs.google.com/spreadsheets/d/1KDiZdkcWTnHBWtftqC7oe6yVvaTo-bsEyzWVGUkCb-4/edit?usp=sharing |
-| Javadoc | Generado en la ruta ./target/site |
+| Javadoc | Generado en la ruta ./target/site/apidocs |
 | Documento de Arquitectura del Sistema | https://drive.google.com/open?id=1v80f1kmaeB-Irwnzg7KMCXpx6v5byPgE7osgPUxiw1Y |
 ---
 ### :book: Instrucciones
