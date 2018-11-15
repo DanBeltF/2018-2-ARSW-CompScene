@@ -23,8 +23,6 @@
  */
 var preguntas={};
 
-
-
 var information=( function Information() {
  
     function getPreguntaSeleccionMultiple() {
@@ -77,6 +75,7 @@ var pregunta=(function Pregunta(){
         
     }
     function selectQUestion(){
+        pregunta.hora();
         pregunta.getNumero();
         alert("QUe numero es:"+ numero);
         if(numero==1){
@@ -91,14 +90,25 @@ var pregunta=(function Pregunta(){
             information.getPreguntaSeleccionMultiple();
         }
     }
+    function hora(){
+        seg=15;
+        int =setInterval(function(){
+            seg=seg-1;
+            document.getElementById('i').innerHTML=seg;
+            if(seg==0){
+                seg=15;
+                alert("Se acabo el tiempo");
+                pregunta.selectQUestion();
+                
+            }     
+        },1000);
+    }
+    
     return {
         getNumero:getNumero,
-        selectQUestion:selectQUestion
-    };
-        
-        
-        
-        
+        selectQUestion:selectQUestion,
+        hora:hora
+    };    
     })();
 
 
