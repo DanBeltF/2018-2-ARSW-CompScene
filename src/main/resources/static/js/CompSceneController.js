@@ -100,6 +100,7 @@ var pregunta=(function Pregunta(){
                 alert("Se acabo el tiempo");
                 pregunta.selectQUestion();
                 
+                
             }     
         },1000);
     }
