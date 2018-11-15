@@ -21,30 +21,83 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+var preguntas={};
 
-
-function getPreguntaSeleccionMultiple() {
-    axios.get('/preguntas/psm')
-        .then(function (response) {
+var information=( function Information() {
+ 
+    function getPreguntaSeleccionMultiple() {
+        axios.get('/preguntas/psm').then(function (response) {
+            this.preguntas=response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
+            console.log(response.data)        
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+    }
+    function getPreguntasVerdaderoFalso(){
+        axios.get('/preguntas/pvf').then(function (response) {
+            this.preguntas=response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : "+preguntas.enunciado;
             console.log(response.data)
         })
         .catch(function (error) {
             console.log(error);
         });
-
-    axios.get('/preguntas/pvf')
-        .then(function (response) {
+    }
+    
+    
+    function getPereguntasRellenar(){
+        axios.get('/preguntas/pr').then(function (response) {
+            this.preguntas=response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Rellenar : "+preguntas.enunciado;            
             console.log(response.data)
         })
         .catch(function (error) {
             console.log(error);
-        });
+        });       
+    }
+    return {
+        getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
+        getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
+        getPereguntasRellenar:getPereguntasRellenar
+        
+        
+    };
+})();
 
-    axios.get('/preguntas/pr')
-        .then(function (response) {
-            console.log(response.data)
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
+var numero=null;
+var pregunta=(function Pregunta(){
+    var numero=null; 
+    function getNumero(){
+        numero = Math.round(Math.random()*3);
+        alert("Número aleatorio es:"+ numero);
+        
+    }
+    function selectQUestion(){
+        pregunta.getNumero();
+        alert("QUe numero es:"+ numero);
+        if(numero==1){
+            information.getPreguntaSeleccionMultiple();
+            
+        }else if(numero==2){
+            information.getPereguntasRellenar();
+            
+        }else if(numero==3){
+            information.getPreguntasVerdaderoFalso();
+        }else{
+            information.getPreguntaSeleccionMultiple();
+        }
+    }
+    return {
+        getNumero:getNumero,
+        selectQUestion:selectQUestion
+    };
+        
+        
+        
+        
+    })();
+
+
+
