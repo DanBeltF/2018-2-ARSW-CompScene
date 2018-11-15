@@ -24,6 +24,7 @@
 var preguntas={};
 
 
+
 var information=( function Information() {
  
     function getPreguntaSeleccionMultiple() {
