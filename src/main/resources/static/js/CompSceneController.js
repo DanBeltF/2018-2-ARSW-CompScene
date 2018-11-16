@@ -29,6 +29,7 @@ var information=( function Information() {
         axios.get('/preguntas/psm').then(function (response) {
             this.preguntas=response.data;
             document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
+            document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data)        
         })
         .catch(function (error) {
@@ -39,6 +40,7 @@ var information=( function Information() {
         axios.get('/preguntas/pvf').then(function (response) {
             this.preguntas=response.data;
             document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : "+preguntas.enunciado;
+            document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data)
         })
         .catch(function (error) {
@@ -51,6 +53,8 @@ var information=( function Information() {
         axios.get('/preguntas/pr').then(function (response) {
             this.preguntas=response.data;
             document.getElementById("enun").innerHTML = "Pregunta Rellenar : "+preguntas.enunciado;            
+            document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
+
             console.log(response.data)
         })
         .catch(function (error) {
