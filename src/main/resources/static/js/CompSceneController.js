@@ -65,7 +65,7 @@ var information=( function Information() {
         
     };
 })();
-
+seg=15;
 var numero=null;
 var pregunta=(function Pregunta(){
     var numero=null; 
@@ -75,7 +75,7 @@ var pregunta=(function Pregunta(){
         
     }
     function selectQUestion(){
-        pregunta.hora();
+        
         pregunta.getNumero();
         alert("QUe numero es:"+ numero);
         if(numero==1){
@@ -90,25 +90,34 @@ var pregunta=(function Pregunta(){
             information.getPreguntaSeleccionMultiple();
         }
     }
+    function hacer(){
+        pregunta.selectQUestion();
+        pregunta.hora();
+
+    }
+
+    
     function hora(){
-        seg=15;
+        
         int =setInterval(function(){
-            seg=seg-1;
+            seg--;
             document.getElementById('i').innerHTML=seg;
             if(seg==0){
                 seg=15;
                 alert("Se acabo el tiempo");
                 pregunta.selectQUestion();
                 
-                
-            }     
+            }   
+            
         },1000);
+        seg++;
     }
     
     return {
         getNumero:getNumero,
         selectQUestion:selectQUestion,
-        hora:hora
+        hora:hora,
+        hacer:hacer
     };    
     })();
 
