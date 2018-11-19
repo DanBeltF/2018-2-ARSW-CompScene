@@ -62,6 +62,21 @@ public class CompSceneController {
         }
     }
     
+      /**
+     *
+     * @return Retorna las respuesta como un array
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/respuestas")
+    public ResponseEntity<?> getRespuestas(){
+        try {
+            return new ResponseEntity<>(compserv.getRespuestas(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }  
+    
+    
     /**
      *
      * @return la pregunta de verdadero o falso como CopyOnWriteArrayList

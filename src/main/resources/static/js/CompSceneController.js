@@ -23,6 +23,10 @@
  */
 var preguntas={};
 
+var respuestas=[];
+
+var txt_respuestas="";
+
 var information=( function Information() {
  
     function getPreguntaSeleccionMultiple() {
@@ -31,6 +35,24 @@ var information=( function Information() {
             document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data)        
+            axios.get('/respuestas').then(function (respuesta) { 
+                alert(respuesta.data);
+                //console.log(respuesta.data) 
+                respuestas=preguntas.opcionesDeRespuesta;
+                console.log(respuestas) ;
+                for (i in respuestas){
+                    txt_respuestas += '<input type="radio" value="" ><label>'+respuestas[i]+'</label><br>';
+                    
+                }
+                document.getElementById("respuesta").innerHTML=txt_respuestas;
+                document.getElementById("respuesta").true;
+             
+             
+            })
+        .catch(function (errorr) {
+            console.log(errorr);
+        })
+             
         })
         .catch(function (error) {
             console.log(error);
