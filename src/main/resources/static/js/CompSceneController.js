@@ -29,41 +29,56 @@ var txt_respuestas="";
 
 var information=( function Information() {
  
-    function getPreguntaSeleccionMultiple() {
-        axios.get('/preguntas/psm').then(function (response) {
-            this.preguntas=response.data;
-            document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
-            document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
-            console.log(response.data)        
-            axios.get('/respuestas').then(function (respuesta) { 
+    function getRespuestas(){
+        txt_respuestas.length=0;
+        txt_respuestas="";
+        axios.get('/respuestas').then(function (respuesta) { 
+                document.getElementById("respuesta").innerHTML= "";
                 alert(respuesta.data);
+                var a=0;
                 //console.log(respuesta.data) 
                 respuestas=preguntas.opcionesDeRespuesta;
                 console.log(respuestas) ;
                 for (i in respuestas){
-                    txt_respuestas += '<input type="radio" value="" ><label>'+respuestas[i]+'</label><br>';
-                    
+                    a++;
+                    var temp='<input type="radio" class="form-check-input" name="respuesta" id=materialUnchecked'+a+' '+'value=""><label class="form-check-label" for=materialUnchecked'+a+'>';
+                    //alert(temp);
+                    txt_respuestas += temp+respuestas[i]+'</label><br>'; 
                 }
                 document.getElementById("respuesta").innerHTML=txt_respuestas;
-                document.getElementById("respuesta").true;
-             
-             
+//                document.getElementById("respuesta").true;          
             })
         .catch(function (errorr) {
             console.log(errorr);
         })
-             
+
+    }
+    function getPreguntaSeleccionMultiple() {        
+        txt_respuestas.length=0;
+        txt_respuestas="";
+        document.getElementById("respuesta").innerHTML= "";
+        axios.get('/preguntas/psm').then(function (response) {
+            this.preguntas=response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
+            document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
+            console.log(response.data);
+            information.getRespuestas();
+
         })
         .catch(function (error) {
             console.log(error);
         })
     }
     function getPreguntasVerdaderoFalso(){
+        txt_respuestas.length=0;
+        txt_respuestas="";
+        document.getElementById("respuesta").innerHTML= "";
         axios.get('/preguntas/pvf').then(function (response) {
             this.preguntas=response.data;
             document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : "+preguntas.enunciado;
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
-            console.log(response.data)
+            console.log(response.data);
+            information.getRespuestas();
         })
         .catch(function (error) {
             console.log(error);
@@ -78,6 +93,7 @@ var information=( function Information() {
             document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
 
             console.log(response.data)
+            information.getRespuestas();
         })
         .catch(function (error) {
             console.log(error);
@@ -86,8 +102,8 @@ var information=( function Information() {
     return {
         getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
         getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
-        getPereguntasRellenar:getPereguntasRellenar
-        
+        getPereguntasRellenar:getPereguntasRellenar,
+        getRespuestas:getRespuestas
         
     };
 })();
@@ -97,13 +113,13 @@ var pregunta=(function Pregunta(){
     var numero=null; 
     function getNumero(){
         numero = Math.round(Math.random()*3);
-        alert("Número aleatorio es:"+ numero);
+        //alert("Número aleatorio es:"+ numero);
         
     }
     function selectQUestion(){
         
         pregunta.getNumero();
-        alert("QUe numero es:"+ numero);
+        //alert("QUe numero es:"+ numero);
         if(numero==1){
             information.getPreguntaSeleccionMultiple();
             
