@@ -147,20 +147,23 @@ public class CompSceneServicesStub implements CompSceneServices {
         respuestas = new CopyOnWriteArrayList<>();
         listaPreguntas= new CopyOnWriteArrayList<>();
         puntaje= new CopyOnWriteArrayList<>();
-        
+        //Primer tipo de pregunta
         respuestaCorrectaRellenar= new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar.add("2");
+        respuestaCorrectaRellenar.add("9");
         pr = new PreguntaRellenar(respuestaCorrectaRellenar,1,"Raiz cuadrada de 4 es {} y la de 81 es {}", "Matemática", null, 6.7f);
-        
+        //Segundo tipo de respuesta
         opcionesRespuestaSeleccion= new CopyOnWriteArrayList<>();
         opcionesRespuestaSeleccion.add("13");
         opcionesRespuestaSeleccion.add("76");
         opcionesRespuestaSeleccion.add("32");
         opcionesRespuestaSeleccion.add("65");
         psm = new PreguntaSeleccionMultiple(13,1,"8 + 5 =: ", "Matemática", opcionesRespuestaSeleccion, 3.5f);
-        
+        //Tercer topo de respesta
         opcionesRespuestaVF= new CopyOnWriteArrayList<>();
-        opcionesRespuestaVF.add("91");
+        //opcionesRespuestaVF.add("91");
+        opcionesRespuestaVF.add("Falso");
+        opcionesRespuestaVF.add("Verdadero");
         pvf = new PreguntaVerdaderoFalso(91,1,"9 elevado al cuadrado = 81", "Matemática", opcionesRespuestaVF, 2.9f);
         
         listaPreguntas.add(pr);

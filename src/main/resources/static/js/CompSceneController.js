@@ -26,6 +26,7 @@ var preguntas={};
 var respuestas=[];
 
 var txt_respuestas="";
+var rellenar=0;
 
 var information=( function Information() {
  
@@ -39,12 +40,21 @@ var information=( function Information() {
                 //console.log(respuesta.data) 
                 respuestas=preguntas.opcionesDeRespuesta;
                 console.log(respuestas) ;
-                for (i in respuestas){
-                    a++;
-                    var temp='<input type="radio" class="form-check-input" name="respuesta" id=materialUnchecked'+a+' '+'value=""><label class="form-check-label" for=materialUnchecked'+a+'>';
-                    //alert(temp);
-                    txt_respuestas += temp+respuestas[i]+'</label><br>'; 
+                alert(rellenar);
+                if(rellenar==0){
+                    for (i in respuestas){
+                        a++;
+                        var temp='<input type="radio" class="form-check-input" name="respuesta" id=materialUnchecked'+a+' '+'value=""><label class="form-check-label" for=materialUnchecked'+a+'>';
+                        //alert(temp);
+                        txt_respuestas += temp+respuestas[i]+'</label><br>'; 
+                    }
+                }else{
+                    txt_respuestas += '<input type="text" class="form-control" name="respuesta" id=materialUnchecked value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';                     
+                    rellenar=0;
                 }
+                var temp='';
+
+                
                 document.getElementById("respuesta").innerHTML=txt_respuestas;
 //                document.getElementById("respuesta").true;          
             })
@@ -54,6 +64,7 @@ var information=( function Information() {
 
     }
     function getPreguntaSeleccionMultiple() {        
+        rellenar=0;
         txt_respuestas.length=0;
         txt_respuestas="";
         document.getElementById("respuesta").innerHTML= "";
@@ -70,6 +81,7 @@ var information=( function Information() {
         })
     }
     function getPreguntasVerdaderoFalso(){
+        rellenar=0;
         txt_respuestas.length=0;
         txt_respuestas="";
         document.getElementById("respuesta").innerHTML= "";
@@ -91,7 +103,7 @@ var information=( function Information() {
             this.preguntas=response.data;
             document.getElementById("enun").innerHTML = "Pregunta Rellenar : "+preguntas.enunciado;            
             document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
-
+            rellenar=1;
             console.log(response.data)
             information.getRespuestas();
         })
