@@ -23,27 +23,28 @@
  */
 var preguntas={};
 
-var respuestas=[];
+var respuesta=[];
 
 var txt_respuestas="";
 var rellenar=0;
 
 var information=( function Information() {
- 
+    
     function getRespuestas(){
         txt_respuestas.length=0;
         txt_respuestas="";
         axios.get('/respuestas').then(function (respuesta) { 
                 document.getElementById("respuesta").innerHTML= "";
-                alert(respuesta.data);
+                //alert(respuesta.data);
                 var a=0;
                 //console.log(respuesta.data) 
                 respuestas=preguntas.opcionesDeRespuesta;
                 console.log(respuestas) ;
-                alert(rellenar);
+                //alert(rellenar);
                 if(rellenar==0){
                     for (i in respuestas){
                         a++;
+                                    //var temp=$("input[type=radio]:checked").val();
                         var temp='<input type="radio" class="form-check-input" name="respuesta" id=materialUnchecked'+a+' '+'value=""><label class="form-check-label" for=materialUnchecked'+a+'>';
                         //alert(temp);
                         txt_respuestas += temp+respuestas[i]+'</label><br>'; 
@@ -56,7 +57,9 @@ var information=( function Information() {
 
                 
                 document.getElementById("respuesta").innerHTML=txt_respuestas;
-//                document.getElementById("respuesta").true;          
+//              document.getElementById("respuesta").true; 
+                
+
             })
         .catch(function (errorr) {
             console.log(errorr);
@@ -74,6 +77,7 @@ var information=( function Information() {
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data);
             information.getRespuestas();
+            information.getRespuesta();
 
         })
         .catch(function (error) {
@@ -91,6 +95,7 @@ var information=( function Information() {
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data);
             information.getRespuestas();
+            information.getRespuesta();
         })
         .catch(function (error) {
             console.log(error);
@@ -106,17 +111,30 @@ var information=( function Information() {
             rellenar=1;
             console.log(response.data)
             information.getRespuestas();
+            information.getRespuesta();
         })
         .catch(function (error) {
             console.log(error);
         });       
     }
+    var respuesta=[];
+    function getRespuesta(){
+        //var temp=$("input[type=radio]:checked").val();
+        //var temp= document.getElementById
+        alert("Se escogio"+temp);
+
+        
+
+    
+    }
+
+
     return {
         getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
         getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
         getPereguntasRellenar:getPereguntasRellenar,
-        getRespuestas:getRespuestas
-        
+        getRespuestas:getRespuestas,
+        getRespuesta:getRespuesta
     };
 })();
 seg=15;
@@ -134,10 +152,8 @@ var pregunta=(function Pregunta(){
         //alert("QUe numero es:"+ numero);
         if(numero==1){
             information.getPreguntaSeleccionMultiple();
-            
         }else if(numero==2){
             information.getPereguntasRellenar();
-            
         }else if(numero==3){
             information.getPreguntasVerdaderoFalso();
         }else{
