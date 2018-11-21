@@ -10,13 +10,18 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/main.css" />
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+        <script type="text/javascript" src="./js/CompSceneController.js"></script>
         
+
+ 
+
     </head>
     <body class="subpage" onload="pregunta.hacer()">
         <!-- Header -->
         <header id="header">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            
             <div class="inner">
                 <a href="index.html" class="logo"><strong>CompScene</strong> ARSW</a>
                 <nav id="nav">
@@ -35,18 +40,29 @@
             
             <h3 style="text-align:center" id="enun"> </h3>
             
-            <div  id="respuesta" class="form-check" style="text-align:center" >
+            <form method="post" name="formulario">
                 
+                
+                
+                <button type="button" id="boton" onclick="information.getRespuesta()">prueba</button>
+            </form>
+            
+            
+            <div   id="respuesta" style="text-align:center" >
+            
+                
+                 
                 <!-- Respuesta -->
+                <button form="pru" id="btn1" type="button" style="text-align:left" >obtener valor2</button>
             </div>
-  
+                <button id="btn" type="button" >obtener valor</button>
                 
             
             <br>
 
             <footer style="text-align:center">
-                <a onload="" class="button">Siguiente</a>
-                <button id="sendNum" type="button" onclick="">Siguiente</button>
+                <a id="carga" class="button" onclick="information.getRespuesta()">Siguiente1</a>
+                <button id="carga" type="button" onclick="information.getRespuesta()">Siguiente</button>
             </footer>
         </section>
         <div id="Reloj">
@@ -76,7 +92,6 @@
         </footer>
         <!-- Scripts -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script type="text/javascript" src="./js/CompSceneController.js"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/skel.min.js"></script>
         <script src="assets/js/util.js"></script>
