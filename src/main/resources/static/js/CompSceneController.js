@@ -24,10 +24,10 @@
  */
 var preguntas={};
 
-var respuesta=[];
-
-var txt_respuestas="";
+var respuesta;
 var rellenar=0;
+var txt_respuestas="";
+
 var total=0;
 
 var information=( function Information() {
@@ -52,8 +52,9 @@ var information=( function Information() {
                     
                     }
                 }else{
-                    txt_respuestas += '<input type="text" class="form-control" name="rell" id=materialUnchecked value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';                     
-                    rellenar=0;
+                    txt_respuestas += '<input type="text" name="rell" id=materialUnchecked class="form-control" value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';
+                    
+                    //rellenar=0;
                 }
                 total=a;
                 var temp='';
@@ -123,127 +124,34 @@ var information=( function Information() {
     }
     
     function getRespuesta(){
-        
-        //$(document).ready(function(){    
-        // $('#boton').click(function(){        
-        /*Captura de datos escrito en los inputs*/        
-        //var resp = document.getElementById("materialUnchecked1").value;
-        //alert(resp);
-        /*Guardando los datos en el LocalStorage*/
+        alert(rellenar);
+        if(rellenar==0){
+            alert("entramos a los mutiples");
+            respuesta=$("input[type=radio]:checked").val();
+            alert(respuesta);
+        }else{
+            alert("entramos en texto")
+            respuesta=$("input[type=text]").val();
+            alert(respuesta);
 
-        /*Limpiando los campos o inputs*/
-  //  });   
-//});
-       for(i=0;i<document.formulario.rell.length;i++){
-            alert(document.formulario.rell.checked);
-            if(document.formulario.checked){
-                alert("sI PUTOS");
-            }
-            
             
         }
-        
-        
-        
-        
-        
+    }
+    function setRellenar(num){
+        alert("num es  "+num);
+        rellenar=num;
+        alert("despues de  "+rellenar);        
         
     }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //for(i=0;i<document.formulario.length;i++){
-          //  alert(document.formulario.checked);
-            //if(document.formulario.checked){
-             //   alert("sI PUTOS");
-            //}
-            
-            
-        //}
-
-            
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //for(i=0;i<ctrl.length;i++){
-          //  if(ctrl[i].checked) {
-        //	alert(ctrl[i].value);
-        //	return ctrl[i].value;                
-          //  }
-
-            
-        //}
-        
-        //var o='materialUnchecked';
-        //var t=0;
-        //$(document).ready(function(){
-          //  alert("llegamos");
-           // $('#boton').click(function(){
-            //    alert("si llegamos");
-             //   var prueba=document.getElementById("materialUnchecked1").value;
-              //  alert("ver"+prueba);
-        //        for(i in prueba){
-          //          var oo=o+t;
-            //        alert("VEMOS CADA COSITO"+oo);
-                    
-                    //var prueba=document.respuesta.respuesta;
-                    //var respu=document.getElementById(oo).value;
-                    
-                    //if(respu[0].checked){
-              //      alert("qUES ES ESTO"+prueba[i]);
-                //    if(prueba[i].checked){
-                  //      alert("pasamos");
-                        
-//                    }
-  //                  alert("hola");
-    //                alert(prueba.checked);
-      //              t++;
-                //document.getElementById("materialUnchecked1").value=""; 
-            
-                  
-      
-    
-    
-    
-    
+   
     return {
         getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
         getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
         getPereguntasRellenar:getPereguntasRellenar,
         getRespuestas:getRespuestas,
-        getRespuesta:getRespuesta
+        getRespuesta:getRespuesta,
+        setRellenar:setRellenar
     };
 })();
 seg=15;
@@ -261,12 +169,17 @@ var pregunta=(function Pregunta(){
         //alert("QUe numero es:"+ numero);
         if(numero==1){
             information.getPreguntaSeleccionMultiple();
+            information.setRellenar(0);
+            
         }else if(numero==2){
             information.getPereguntasRellenar();
+            information.setRellenar(1);
         }else if(numero==3){
             information.getPreguntasVerdaderoFalso();
+            information.setRellenar(0);
         }else{
             information.getPreguntaSeleccionMultiple();
+            information.setRellenar(0);
         }
     }
     function hacer(){
@@ -284,9 +197,10 @@ var pregunta=(function Pregunta(){
             if(seg==0){
                 seg=15;
                 alert("Se acabo el tiempo");
-                information.getRespuesta();
+                
                 //alert("Se GUARDO");
                 pregunta.selectQUestion();
+                //information.getRespuesta();
                 
             }   
             
