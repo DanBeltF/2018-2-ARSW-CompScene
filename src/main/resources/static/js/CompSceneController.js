@@ -45,31 +45,20 @@ var information=( function Information() {
                 if(rellenar==0){
                     for (i in respuestas){
                         a++;
-                                    //var temp=$("input[type=radio]:checked").val();       
                         var temp='<input type="radio" class="form-check-input" name="rell" id=materialUnchecked'+a+' '+'value="'+respuestas[i]+'"><label class="form-check-label" for=materialUnchecked'+a+'>';
-                        //alert(temp);
                         txt_respuestas += temp+respuestas[i]+'</label><br>'; 
-                    
                     }
                 }else{
                     txt_respuestas += '<input type="text" name="rell" id=materialUnchecked class="form-control" value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';
-                    
-                    //rellenar=0;
                 }
                 total=a;
                 var temp='';
-
-                
                 document.getElementById("respuesta").innerHTML=txt_respuestas;
                 document.getElementsByName("formulario").innerHTML=txt_respuestas;
-//              document.getElementById("respuesta").true; 
-                
-
             })
         .catch(function (errorr) {
             console.log(errorr);
         })
-
     }
     function getPreguntaSeleccionMultiple() {        
         rellenar=0;
@@ -82,8 +71,6 @@ var information=( function Information() {
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data);
             information.getRespuestas();
-            //information.getRespuesta();
-
         })
         .catch(function (error) {
             console.log(error);
@@ -100,14 +87,11 @@ var information=( function Information() {
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data);
             information.getRespuestas();
-            //information.getRespuesta();
         })
         .catch(function (error) {
             console.log(error);
         });
     }
-    
-    
     function getPereguntasRellenar(){
         axios.get('/preguntas/pr').then(function (response) {
             this.preguntas=response.data;
@@ -116,13 +100,11 @@ var information=( function Information() {
             rellenar=1;
             console.log(response.data)
             information.getRespuestas();
-            //information.getRespuesta();
         })
         .catch(function (error) {
             console.log(error);
         });       
     }
-    
     function getRespuesta(){
         alert(rellenar);
         if(rellenar==0){
@@ -132,19 +114,14 @@ var information=( function Information() {
         }else{
             alert("entramos en texto")
             respuesta=$("input[type=text]").val();
-            alert(respuesta);
-
-            
+            alert(respuesta);       
         }
     }
     function setRellenar(num){
         alert("num es  "+num);
         rellenar=num;
         alert("despues de  "+rellenar);        
-        
     }
-        
-   
     return {
         getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
         getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
@@ -159,18 +136,13 @@ var numero=null;
 var pregunta=(function Pregunta(){
     var numero=null; 
     function getNumero(){
-        numero = Math.round(Math.random()*3);
-        //alert("Número aleatorio es:"+ numero);
-        
+        numero = Math.round(Math.random()*3);   
     }
     function selectQUestion(){
-        
         pregunta.getNumero();
-        //alert("QUe numero es:"+ numero);
         if(numero==1){
             information.getPreguntaSeleccionMultiple();
             information.setRellenar(0);
-            
         }else if(numero==2){
             information.getPereguntasRellenar();
             information.setRellenar(1);
@@ -185,29 +157,20 @@ var pregunta=(function Pregunta(){
     function hacer(){
         pregunta.selectQUestion();
         pregunta.hora();
-
     }
-
-    
     function hora(){
-        
         int =setInterval(function(){
             seg--;
             document.getElementById('i').innerHTML=seg;
             if(seg==0){
                 seg=15;
                 alert("Se acabo el tiempo");
-                
                 //alert("Se GUARDO");
                 pregunta.selectQUestion();
-                //information.getRespuesta();
-                
             }   
-            
         },1000);
         seg++;
     }
-    
     return {
         getNumero:getNumero,
         selectQUestion:selectQUestion,
@@ -215,3 +178,4 @@ var pregunta=(function Pregunta(){
         hacer:hacer
     };    
     })(); 
+    
