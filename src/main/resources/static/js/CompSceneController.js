@@ -40,9 +40,7 @@ var information = (function Information() {
             xhr.open('GET', url, true);
             xhr.send('');
           }
-
         
-    
 
 
 
