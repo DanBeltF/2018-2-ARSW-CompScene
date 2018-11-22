@@ -32,6 +32,16 @@ var total=0;
 
 var information=( function Information() {
     
+    function setRespuestas(){
+        axios.post('/respuestas/concretas', respuesta)
+            .then(function(response){
+                console.log('saved successfully')
+            });  
+        
+        
+        
+    }
+    
     function getRespuestas(){
         txt_respuestas.length=0;
         txt_respuestas="";
@@ -106,21 +116,23 @@ var information=( function Information() {
         });       
     }
     function getRespuesta(){
-        alert(rellenar);
+        //alert(rellenar);
         if(rellenar==0){
-            alert("entramos a los mutiples");
+            //alert("entramos a los mutiples");
             respuesta=$("input[type=radio]:checked").val();
+            information.setRespuestas();
             alert(respuesta);
         }else{
-            alert("entramos en texto")
+            //alert("entramos en texto")
             respuesta=$("input[type=text]").val();
-            alert(respuesta);       
+            alert(respuesta);   
+            information.setRespuestas();
         }
     }
     function setRellenar(num){
-        alert("num es  "+num);
+        //alert("num es  "+num);
         rellenar=num;
-        alert("despues de  "+rellenar);        
+        //alert("despues de  "+rellenar);        
     }
     return {
         getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
@@ -128,7 +140,8 @@ var information=( function Information() {
         getPereguntasRellenar:getPereguntasRellenar,
         getRespuestas:getRespuestas,
         getRespuesta:getRespuesta,
-        setRellenar:setRellenar
+        setRellenar:setRellenar,
+        setRespuestas:setRespuestas
     };
 })();
 seg=15;
