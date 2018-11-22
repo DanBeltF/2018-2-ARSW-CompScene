@@ -22,173 +22,210 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-var preguntas={};
-
+var preguntas = {};
 var respuesta;
-var rellenar=0;
-var txt_respuestas="";
+var rellenar = 0;
+var txt_respuestas = "";
 
-var total=0;
+var total = 0;
 
-var information=( function Information() {
+var numPreguntas=3;
+var pag2='/Estadisticas.html';
+
+
+var information = (function Information() {
+    function load(url){
+        var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url, true);
+            xhr.send('');
+          }
+
+        
     
-    function setRespuestas(){
+
+
+
+
+    function setRespuestas() {
+        
         axios.post('/respuestas/concretas', respuesta)
-            .then(function(response){
-                console.log('saved successfully')
-            });  
-        
-        
-        
+                .then(function (response) {
+                    console.log('saved successfully')
+                });
     }
-    
-    function getRespuestas(){
-        txt_respuestas.length=0;
-        txt_respuestas="";
-        axios.get('/respuestas').then(function (respuesta) { 
-                document.getElementById("respuesta").innerHTML= "";
-                var a=0;
-                //console.log(respuesta.data) 
-                respuestas=preguntas.opcionesDeRespuesta;
-                console.log(respuestas) ;
-                //alert(rellenar);
-                if(rellenar==0){
-                    for (i in respuestas){
-                        a++;
-                        var temp='<input type="radio" class="form-check-input" name="rell" id=materialUnchecked'+a+' '+'value="'+respuestas[i]+'"><label class="form-check-label" for=materialUnchecked'+a+'>';
-                        txt_respuestas += temp+respuestas[i]+'</label><br>'; 
-                    }
-                }else{
-                    txt_respuestas += '<input type="text" name="rell" id=materialUnchecked class="form-control" value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';
+    function tiempo() {
+        
+        axios.post('/tiempo', seg+"")
+                .then(function (response) {
+                    console.log('saved successfully')
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+    }
+
+    function getRespuestas() {
+        txt_respuestas.length = 0;
+        txt_respuestas = "";
+        axios.get('/respuestas').then(function (respuesta) {
+            document.getElementById("respuesta").innerHTML = "";
+            var a = 0;
+            respuestas = preguntas.opcionesDeRespuesta;
+            if (rellenar == 0) {
+                for (i in respuestas) {
+                    a++;
+                    var temp = '<input type="radio" class="form-check-input" name="rell" id=materialUnchecked' + a + ' ' + 'value="' + respuestas[i] + '"><label class="form-check-label" for=materialUnchecked' + a + '>';
+                    txt_respuestas += temp + respuestas[i] + '</label><br>';
                 }
-                total=a;
-                var temp='';
-                document.getElementById("respuesta").innerHTML=txt_respuestas;
-                document.getElementsByName("formulario").innerHTML=txt_respuestas;
-            })
-        .catch(function (errorr) {
-            console.log(errorr);
+            } else {
+                txt_respuestas += '<input type="text" name="rell" id=materialUnchecked class="form-control" value="" placeholder="Campo de texto" ><label class="form-control" for=materialUnchecked>';
+            }
+            total = a;
+            var temp = '';
+            document.getElementById("respuesta").innerHTML = txt_respuestas;
+            document.getElementsByName("formulario").innerHTML = txt_respuestas;
         })
+                .catch(function (errorr) {
+                    console.log(errorr);
+                })
     }
-    function getPreguntaSeleccionMultiple() {        
-        rellenar=0;
-        txt_respuestas.length=0;
-        txt_respuestas="";
-        document.getElementById("respuesta").innerHTML= "";
+    function getPreguntaSeleccionMultiple() {
+        rellenar = 0;
+        txt_respuestas.length = 0;
+        txt_respuestas = "";
+        document.getElementById("respuesta").innerHTML = "";
         axios.get('/preguntas/psm').then(function (response) {
-            this.preguntas=response.data;
-            document.getElementById("enun").innerHTML = "Pregunta Seleccion : "+preguntas.enunciado;
+            this.preguntas = response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Seleccion : " + preguntas.enunciado;
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data);
             information.getRespuestas();
         })
-        .catch(function (error) {
-            console.log(error);
-        })
+                .catch(function (error) {
+                    console.log(error);
+                })
     }
-    function getPreguntasVerdaderoFalso(){
-        rellenar=0;
-        txt_respuestas.length=0;
-        txt_respuestas="";
-        document.getElementById("respuesta").innerHTML= "";
+    function getPreguntasVerdaderoFalso() {
+        rellenar = 0;
+        txt_respuestas.length = 0;
+        txt_respuestas = "";
+        document.getElementById("respuesta").innerHTML = "";
         axios.get('/preguntas/pvf').then(function (response) {
-            this.preguntas=response.data;
-            document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : "+preguntas.enunciado;
+            this.preguntas = response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : " + preguntas.enunciado;
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data);
             information.getRespuestas();
         })
-        .catch(function (error) {
-            console.log(error);
-        });
+                .catch(function (error) {
+                    console.log(error);
+                });
     }
-    function getPereguntasRellenar(){
+    function getPereguntasRellenar() {
         axios.get('/preguntas/pr').then(function (response) {
-            this.preguntas=response.data;
-            document.getElementById("enun").innerHTML = "Pregunta Rellenar : "+preguntas.enunciado;            
+            this.preguntas = response.data;
+            document.getElementById("enun").innerHTML = "Pregunta Rellenar : " + preguntas.enunciado;
             document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
-            rellenar=1;
+            rellenar = 1;
             console.log(response.data)
             information.getRespuestas();
         })
-        .catch(function (error) {
-            console.log(error);
-        });       
+                .catch(function (error) {
+                    console.log(error);
+                });
     }
-    function getRespuesta(){
-        //alert(rellenar);
-        if(rellenar==0){
-            //alert("entramos a los mutiples");
-            respuesta=$("input[type=radio]:checked").val();
+    function getRespuesta() {
+        if (rellenar == 0) {
+            respuesta = $("input[type=radio]:checked").val();
+            alert("Que es respuesta nonono"+respuesta);
+            if(respuesta==null){
+                respuesta="SIN RESPUESTA";
+            }            
             information.setRespuestas();
-            alert(respuesta);
-        }else{
-            //alert("entramos en texto")
-            respuesta=$("input[type=text]").val();
-            alert(respuesta);   
+            information.tiempo();
+            pregunta.selectQUestion();
+        } else {          
+            respuesta = $("input[type=text]").val();
+            if(respuesta==""){
+                respuesta="SIN RESPUESTA";
+            }
             information.setRespuestas();
+            information.tiempo();
+            pregunta.selectQUestion();
         }
     }
-    function setRellenar(num){
-        //alert("num es  "+num);
-        rellenar=num;
-        //alert("despues de  "+rellenar);        
+    function setRellenar(num) {
+        rellenar = num;      
     }
     return {
-        getPreguntaSeleccionMultiple:getPreguntaSeleccionMultiple,
-        getPreguntasVerdaderoFalso:getPreguntasVerdaderoFalso,
-        getPereguntasRellenar:getPereguntasRellenar,
-        getRespuestas:getRespuestas,
-        getRespuesta:getRespuesta,
-        setRellenar:setRellenar,
-        setRespuestas:setRespuestas
+        getPreguntaSeleccionMultiple: getPreguntaSeleccionMultiple,
+        getPreguntasVerdaderoFalso: getPreguntasVerdaderoFalso,
+        getPereguntasRellenar: getPereguntasRellenar,
+        getRespuestas: getRespuestas,
+        getRespuesta: getRespuesta,
+        setRellenar: setRellenar,
+        setRespuestas: setRespuestas,
+        tiempo: tiempo,
+        load:load
+
     };
 })();
-seg=15;
-var numero=null;
-var pregunta=(function Pregunta(){
-    var numero=null; 
-    function getNumero(){
-        numero = Math.round(Math.random()*3);   
+var seg=15;
+var numero = null;
+var pregunta = (function Pregunta() {
+    var numero = null;
+    function getNumero() {
+        numero = Math.round(Math.random() * 3);
     }
-    function selectQUestion(){
+    function selectQUestion() {
         pregunta.getNumero();
-        if(numero==1){
-            information.getPreguntaSeleccionMultiple();
-            information.setRellenar(0);
-        }else if(numero==2){
-            information.getPereguntasRellenar();
-            information.setRellenar(1);
-        }else if(numero==3){
-            information.getPreguntasVerdaderoFalso();
-            information.setRellenar(0);
+        if(numPreguntas>0){
+            if (numero == 1) {
+                information.getPreguntaSeleccionMultiple();
+                information.setRellenar(0);
+                numPreguntas--;
+            } else if (numero == 2) {
+                information.getPereguntasRellenar();
+                information.setRellenar(1);
+                numPreguntas--;
+            } else if (numero == 3) {
+                information.getPreguntasVerdaderoFalso();
+                information.setRellenar(0);
+                numPreguntas--;
+            } else {
+                information.getPreguntaSeleccionMultiple();
+                information.setRellenar(0);
+                numPreguntas--;
+            }
         }else{
-            information.getPreguntaSeleccionMultiple();
-            information.setRellenar(0);
+            information.load(pag2);
+            
+            
         }
     }
-    function hacer(){
+    function hacer() {
         pregunta.selectQUestion();
         pregunta.hora();
     }
-    function hora(){
-        int =setInterval(function(){
+    function hora() {
+        int = setInterval(function () {
             seg--;
-            document.getElementById('i').innerHTML=seg;
-            if(seg==0){
-                seg=15;
+            document.getElementById('i').innerHTML = seg;
+            if (seg == 0) {
+                seg = 15;
                 alert("Se acabo el tiempo");
-                //alert("Se GUARDO");
                 pregunta.selectQUestion();
-            }   
-        },1000);
+            }
+        }, 1000);
         seg++;
     }
     return {
-        getNumero:getNumero,
-        selectQUestion:selectQUestion,
-        hora:hora,
-        hacer:hacer
-    };    
-    })(); 
+        getNumero: getNumero,
+        selectQUestion: selectQUestion,
+        hora: hora,
+        hacer: hacer
+    };
+})();
     

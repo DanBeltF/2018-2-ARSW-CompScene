@@ -53,7 +53,7 @@ public class CompSceneController {
     /**
      *
      * @return la pregunta de seleccion multiple como CopyOnWriteArrayList
-     */
+     */ 
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
     public ResponseEntity<?> getPreguntaSeleccion(){
         try {
@@ -113,7 +113,7 @@ public class CompSceneController {
            
     }
     @PostMapping(path = "/tiempo")
-    public void setRespuesta(@RequestBody Integer tiempo){
+    public void setTiempo(@RequestBody String tiempo){
 
            System.out.println("LA RESPUESTA ES"+tiempo);
     }
