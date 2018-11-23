@@ -35,10 +35,7 @@ var pag2='/Estadisticas.html';
 
 var information = (function Information() {
     function load(url){
-        var xhr = new XMLHttpRequest();
-
-            xhr.open('GET', url, true);
-            xhr.send('');
+        location.href ="/Estadisticas.html";
           }
         
 
