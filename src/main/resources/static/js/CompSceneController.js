@@ -37,10 +37,6 @@ var information = (function Information() {
     function load(url){
         location.href ="/Estadisticas.html";
           }
-        
-
-
-
 
     function setRespuestas() {
         
