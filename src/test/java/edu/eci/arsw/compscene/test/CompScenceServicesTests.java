@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.apache.maven.surefire.booter.ForkedBooter;
 import static org.quicktheories.QuickTheory.qt;
 import static org.quicktheories.generators.Generate.*;
 import static org.quicktheories.generators.SourceDSL.*;
