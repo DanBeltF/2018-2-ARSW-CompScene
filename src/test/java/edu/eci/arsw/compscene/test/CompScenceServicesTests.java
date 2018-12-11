@@ -44,8 +44,8 @@ import static org.quicktheories.generators.SourceDSL.*;
  * @author dbeltran
  */
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest()
+@RunWith(SpringRunner.class)
+@SpringBootTest()
 public class CompScenceServicesTests {
     
     @Autowired
