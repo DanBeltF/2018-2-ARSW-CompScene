@@ -86,7 +86,11 @@ public class Cuestionario {
 
     /**
      *
+<<<<<<< HEAD
+     * @return id
+=======
      * @return id - id del cuestionario
+>>>>>>> cd6518c9d091db229dae10daf7285950ae8ac11e
      */
     public int getId() {
         return id;
@@ -102,7 +106,11 @@ public class Cuestionario {
     
     /**
      *
+<<<<<<< HEAD
+     * @return preguntas
+=======
      * @return preguntas - lista de preguntas a generar
+>>>>>>> cd6518c9d091db229dae10daf7285950ae8ac11e
      */
     public List<Pregunta> getPreguntas() {
         return preguntas;
@@ -126,7 +134,11 @@ public class Cuestionario {
 
     /**
      *
+<<<<<<< HEAD
+     * @param respuestas
+=======
      * @param respuestas - cambia respuestas
+>>>>>>> cd6518c9d091db229dae10daf7285950ae8ac11e
      */
     public void setRespuestas(List<Tripla<String,Boolean,Float>> respuestas) {
         this.respuestas = respuestas;
