@@ -35,38 +35,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-/**
- *
- * @author dbeltran
- */
-@Service
-//@CrossOrigin("*")
-@RestController(value = "/preguntas")
-public class CompSceneController {
-    
-    @Autowired
-    private CompSceneServices compserv;
-    
-    @RequestMapping("/")
-    String index() {
-        return "index";
-    }
-    
-    /**
-     *
-     * @return
-     */
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> getPreguntas(){
-        try {
-            
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
-            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
-        }      
-    }
-    
-    
-    
-}
+
