@@ -20,7 +20,7 @@
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
+ * THE SOFTWARE.  jspdf.min.js
  */
 var preguntas = {};
 var respuesta;
@@ -37,10 +37,6 @@ var information = (function Information() {
     function load(url){
         location.href ="/Estadisticas.html";
           }
-        
-
-
-
 
     function setRespuestas() {
         
@@ -134,7 +130,7 @@ var information = (function Information() {
     function getRespuesta() {
         if (rellenar == 0) {
             respuesta = $("input[type=radio]:checked").val();
-            alert("Que es respuesta nonono"+respuesta);
+            //alert("Que es respuesta nonono"+respuesta);
             if(respuesta==null){
                 respuesta="SIN RESPUESTA";
             }            
