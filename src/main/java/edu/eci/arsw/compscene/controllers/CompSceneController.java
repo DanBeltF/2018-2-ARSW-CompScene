@@ -24,6 +24,8 @@
 package edu.eci.arsw.compscene.controllers;
 
 import edu.eci.arsw.compscene.services.CompSceneServices;
+
+import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.stereotype.Service;
@@ -33,6 +35,89 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
+/**
+ *
+ * @author dbeltran
+ */
+@Service
+//@CrossOrigin("*")
+@RestController(value = "/preguntas")
+public class CompSceneController {
+    
+    @Autowired
+    private CompSceneServices compserv;
+    
+    /**
+     *
+     * @return la pregunta de seleccion multiple como CopyOnWriteArrayList
+     */ 
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
+    public ResponseEntity<?> getPreguntaSeleccion(){
+        try {
+            return new ResponseEntity<>(compserv.getPreguntaSeleccion(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+      /**
+     *
+     * @return Retorna las respuesta como un array
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/respuestas")
+    public ResponseEntity<?> getRespuestas(){
+        try {
+            return new ResponseEntity<>(compserv.getRespuestas(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }  
+    
+    
+    /**
+     *
+     * @return la pregunta de verdadero o falso como CopyOnWriteArrayList
+     */
+    @RequestMapping(method = RequestMethod.GET,path = "/preguntas/pvf")
+    public ResponseEntity<?> getPreguntaVerdaderoFalso(){
+        try {
+            return new ResponseEntity<>(compserv.getPreguntaVerdaderoFalso(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    /**
+     *
+     * @return la pregunta de rellenar como CopyOnWriteArrayList
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/pr")
+    public ResponseEntity<?> getPreguntaRellenar(){
+        try {
+            return new ResponseEntity<>(compserv.getPreguntaRellenar(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @PostMapping(path = "/respuestas/concretas")
+    public void setRespuesta(@RequestBody String respuesta){
+           System.out.println("LA RESPUESTA ES"+respuesta);
+           
+    }
+    @PostMapping(path = "/tiempo")
+    public void setTiempo(@RequestBody String tiempo){
 
+           System.out.println("LA RESPUESTA ES"+tiempo);
+    }
+}

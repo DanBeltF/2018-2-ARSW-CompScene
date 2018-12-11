@@ -24,7 +24,6 @@
 package edu.eci.arsw.compscene.model;
 
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
@@ -36,9 +35,9 @@ public abstract class Pregunta {
     private String enunciado;
     private String tema;
     private List<String> opcionesDeRespuesta;
-    private Timer tiempo;
+    private Float tiempo;
 
-    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+    public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
         this.id = id;
         this.enunciado = enunciado;
         this.tema = tema;
@@ -78,11 +77,11 @@ public abstract class Pregunta {
         this.opcionesDeRespuesta = opcionesDeRespuesta;
     }
 
-    public Timer getTiempo() {
+    public Float getTiempo() {
         return tiempo;
     }
 
-    public void setTiempo(Timer tiempo) {
+    public void setTiempo(Float tiempo) {
         this.tiempo = tiempo;
     }
     

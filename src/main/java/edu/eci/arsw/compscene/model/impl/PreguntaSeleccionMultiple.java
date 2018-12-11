@@ -25,7 +25,6 @@ package edu.eci.arsw.compscene.model.impl;
 
 import edu.eci.arsw.compscene.model.Pregunta;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
@@ -35,14 +34,24 @@ public class PreguntaSeleccionMultiple extends Pregunta{
     
     private int respuestaCorrecta;
 
-    public PreguntaSeleccionMultiple(int respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Timer tiempo) {
+    public PreguntaSeleccionMultiple(int respuestaCorrecta, int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
         super(id, enunciado, tema, opcionesDeRespuesta, tiempo);
+                                    //lista de String hay 4 string(opciones)
+                                    //la respuesta correcta esta en la poscicion x
         this.respuestaCorrecta = respuestaCorrecta;
     }
 
-    @Override
+    @Override                       //tipo entero               tipo entero
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta) {
-        return super.validadorRespuesta(respuestaJugador, respuestaCorrecta); //To change body of generated methods, choose Tools | Templates.
+        Boolean respuesta=false;
+        int respJUgador=(int)respuestaJugador;
+        int respCorrecta=(int)this.respuestaCorrecta;
+        List<String> re=getOpcionesDeRespuesta();        
+        if((re.get(respJUgador).equals(re.get(respCorrecta)))&& respJUgador==respCorrecta){
+            respuesta=true;
+        }
+
+        return respuesta;
     }
 
     @Override
@@ -51,12 +60,12 @@ public class PreguntaSeleccionMultiple extends Pregunta{
     }
 
     @Override
-    public void setTiempo(Timer tiempo) {
+    public void setTiempo(Float tiempo) {
         super.setTiempo(tiempo); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Timer getTiempo() {
+    public Float getTiempo() {
         return super.getTiempo(); //To change body of generated methods, choose Tools | Templates.
     }
 

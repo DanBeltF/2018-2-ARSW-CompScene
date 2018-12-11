@@ -15,13 +15,52 @@
 - Daniel E. Castiblanco Rocha
 - Cesar E. Lanos Camacho
 ### Profesor
-- Santiago Carrillo Barbosa
+- Luis Daniel Benavides Navarro
 ---
-### :camera: Pantallas de la aplicación
-
+### :link: URLs
+| Elemento | Link |
+|:-------------------------------------:|:----------------------------------------------------------------------------------------------------:|
+| Propuesta de proyecto | https://docs.google.com/document/d/1K1JDaow5Tx50JQjSpznRKCyIFm_KJOQI2qhBrM3IMqQ/edit?usp=sharing |
+| Trello | https://trello.com/b/jBTv83Tq/arsw-2018-2-historias-compscene |
+| NinjaMock | https://ninjamock.com/s/JKFVVTx |
+| Backlog de producto | https://docs.google.com/spreadsheets/d/1KDiZdkcWTnHBWtftqC7oe6yVvaTo-bsEyzWVGUkCb-4/edit?usp=sharing |
+| Javadoc | Generado en la ruta ./target/site/apidocs |
+| Documento de Arquitectura del Sistema | https://drive.google.com/open?id=1v80f1kmaeB-Irwnzg7KMCXpx6v5byPgE7osgPUxiw1Y |
 ---
 ### :book: Instrucciones
 Cada pregunta consta de un tiempo límite para contestarla, cuando el jugador conteste dicha pregunta deberá esperar a que se acabe ese tiempo límite para proceder a la siguiente y para visualizar si su respuesta fue o no correcta, sin embargo internamente se sabrá en cuanto tiempo la respondió y eso será un factor importante a la hora de calcular el puntaje entre los competidores.
+
+---
+
+### :camera: Pantallas de la aplicación
+![](img/pantalla1.PNG)
+
+---
+![](img/pantalla2.PNG)
+
+---
+![](img/pantalla3.PNG)
+
+---
+![](img/pantalla4.PNG)
+
+---
+![](img/pantalla5.PNG)
+
+
+---
+
+### :triangular_ruler: Diseño de arquitectura 
+#### - Paquetes
+![](img/CompScene-Paquetes.png)
+#### - Clases
+![](img/CompScene-Clases.png)
+#### - Despliegue
+![](img/CompScene-Despliegue.png)
+#### - Secuencia
+![](img/CompScene-Secuencia.png)
+#### - Casos de uso
+![](img/CompScene-CasosDeUso.png)
 
 ---
 ### :wrench: Tecnologías utilizadas

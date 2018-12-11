@@ -25,34 +25,73 @@ package edu.eci.arsw.compscene.model;
 
 import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import java.util.List;
-import java.util.Timer;
 
 /**
  *
- * @author dbeltran
+ * @author dcastiblanco
  */
 public class Resultado {
     private int cantRespuestasCorrectas;
 
+    /**
+     * Constructor de resultado
+     * @param cantRespuestasCorrectas - cantidad de respuestas correctas por todos los usuarios
+     */
     public Resultado(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
     }
     
+    
+    /**
+     * Calcula el puntaje general por tema, obtenido por todos los jugadores
+     * @param puntajeTema Lista de puntajes de cada jugador por tema
+     * @return Puntaje general por tema
+     */
     public float calcularPuntajeGeneral(List<Tupla<String,Float>> puntajeTema){
-        return 0;
+        float puntajeGeneral=0;
+        for(int i=0; i<puntajeTema.size(); i++){
+            puntajeGeneral+=puntajeTema.get(i).getElem2();
+        }
+        return puntajeGeneral;
     }
     
-    public Timer calcularTiempoPromedioRespuestaGeneral(List<Timer> tiempos){
-        return new Timer();
+    
+    /**
+     * Calcula el tiempo promedio de respuesta general
+     * @param tiempos - tiempos tomados por cada usuario
+     * @return Tiempo promedio de respuesta general
+     */
+    public float calcularTiempoPromedioRespuestaGeneral(List<Float> tiempos){
+        float total=0;
+        for (int i=0; i<tiempos.size();i++){
+            total+=tiempos.get(i);
+        }
+        float promedio = total/tiempos.size();
+        return promedio;
     }
+    
 
+    /**
+     * Obtiene las respuestas correctas
+     * @return Respuestas correctas
+     */ 
     public int getCantRespuestasCorrectas() {
         return cantRespuestasCorrectas;
     }
 
+    /**
+     * Configura respuestas correctas
+     * @param cantRespuestasCorrectas - cantidad de respuestas correctas por el grupo
+     */
     public void setCantRespuestasCorrectas(int cantRespuestasCorrectas) {
         this.cantRespuestasCorrectas = cantRespuestasCorrectas;
     }
+
+    @Override
+    public String toString() {
+        return "Resultado{" + "cantRespuestasCorrectas=" + cantRespuestasCorrectas + '}';
+    }
+    
     
     
 }
