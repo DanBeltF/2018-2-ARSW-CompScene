@@ -25,6 +25,7 @@ package edu.eci.arsw.compscene.model;
 
 import edu.eci.arsw.compscene.persistence.impl.Tripla;
 import edu.eci.arsw.compscene.persistence.impl.Tupla;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -39,6 +40,9 @@ public class Jugador {
     private String password;
     private float puntajeJugador;
     private List<Tupla<String, Float>> puntajeTemas;
+    private float tiempoFinal;
+    private float tiempoInicio;
+    private float tiempoTotal;
 
     /**
      * Constructor
@@ -55,6 +59,7 @@ public class Jugador {
         this.password = password;
         this.puntajeJugador = puntajeJugador;
         this.puntajeTemas = puntajeTemas;
+        
     }   
 
     /**
@@ -178,6 +183,37 @@ public class Jugador {
         }
         temaMasFallado=new Tupla(tema,menor);
         return temaMasFallado;
+    }
+    
+    
+    /**
+     * Inicia contador de tiempo para jugador
+     */
+    public void inicioContador(){
+        Date date= new Date();
+        float inicio=date.getTime();
+        this.tiempoInicio=inicio;          
+        
+    }
+    
+    /**
+     * Finaliza el contador de tiempo
+     */
+    public void finContador(){
+        Date date= new Date();
+        float fin=date.getTime();
+        this.tiempoFinal=fin;
+    }
+    
+    /**
+     * Calcula el total del tiempo de cada jugador
+     * @param inicio
+     * @param fin
+     * @return 
+     */
+    public float totalTiempo(float inicio, float fin){
+        tiempoTotal=tiempoFinal-tiempoInicio;
+        return tiempoTotal;
     }
 
     

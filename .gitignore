@@ -39,3 +39,4 @@ nbdist/
 .gitold
 .gradle
 .DS_Store
+/target/
