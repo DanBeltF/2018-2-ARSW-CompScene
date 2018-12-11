@@ -76,8 +76,8 @@ chart.innerRadius = am4core.percent(50);
 
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
-pieSeries.dataFields.category = "country";
+pieSeries.dataFields.value = "puntaje";
+pieSeries.dataFields.category = "tema";
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;
 pieSeries.slices.template.strokeOpacity = 1;
@@ -97,7 +97,7 @@ pieSeries.hiddenState.properties.startAngle = -90;
             <div class="container" style="text-align:start">
                 <h2>Personales</h2>
                 <div class="panel panel-default">
-                    <div class="panel-body">A Basic Panel</div>
+                    <div class="panel-body">Acertadas: 4<br>Incorrectas: 3</div>
                 </div>
             </div>
         

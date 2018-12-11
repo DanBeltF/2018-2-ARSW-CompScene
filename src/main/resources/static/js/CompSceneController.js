@@ -29,7 +29,7 @@ var txt_respuestas = "";
 
 var total = 0;
 
-var numPreguntas=3;
+var numPreguntas=7;
 var pag2='/Estadisticas.html';
 
 
