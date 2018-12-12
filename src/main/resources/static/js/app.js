@@ -1,48 +1,53 @@
-var app = (function () {
+var stompClient = null;
 
-    
-    
-    var id = 0;
-    var stompClient = null; 
+function setConnected(connected) {
+    $("#connect").prop("disabled", connected);
+    $("#disconnect").prop("disabled", !connected);
+    if (connected) {
+        $("#conversation").show();
+    }
+    else {
+        $("#conversation").hide();
+    }
+    $("#greetings").html("");
+}
 
-    var connectAndSubscribe = function () {
-        console.info('Connecting to WS...');
-        var socket = new SockJS('/stompendpoint');
-        stompClient = Stomp.over(socket);
-        
-        //subscribe to /topic/newpoint when connections succeed
-        stompClient.connect({}, function (frame) {
-            console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/newpoint.' + id, function (eventbody) {
-                var point=JSON.parse(eventbody.body);
-                addPointToCanvas(point);
-            });
-            stompClient.subscribe('/topic/newpolygon.' + id, function (eventbody) {
-                var polygon=JSON.parse(eventbody.body);
-                addPolygonToCanvas(polygon);
-            });
+function connect() {
+    var socket = new SockJS('/respJugador');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/respJugador', function (greeting) {
+            showGreeting(JSON.parse(greeting.body).content);
         });
+    });
+}
 
-    };
-    
-    
+function disconnect() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
+}
 
-    return {
+function sendName() {
 
-       
+        var name = document.getElementById('place').value;
+        stompClient.send("/app/respJugador", {},  JSON.stringify({'place': name}));
 
-        disconnect: function () {
-            if (stompClient !== null) {
-                stompClient.disconnect();
-            }
-            setConnected(false);
-            console.log("Disconnected");
-        },
-        
-        connect: function (identifier) {
-            id = identifier;
-            app.init();
-        }
-    };
+}
 
-})();
+function showGreeting(message) {
+    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+}
+
+$(function () {
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $( "#connect" ).click(function() { connect(); });
+    $( "#disconnect" ).click(function() { disconnect(); });
+    $( "#send" ).click(function() { sendName(); });
+});
