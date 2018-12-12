@@ -115,9 +115,10 @@ public class CompSceneController {
      *
      * @return la pregunta de rellenar como CopyOnWriteArrayList
      */
-    @RequestMapping(method = RequestMethod.GET, path = "/jugadores")
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/jugadores")
     public ResponseEntity<?> getAllJugadores(){
         try {
+            System.out.println("quiere salir algo");
             return new ResponseEntity<>(compserv.allJugadores(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);

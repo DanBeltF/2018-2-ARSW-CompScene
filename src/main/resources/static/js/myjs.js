@@ -25,11 +25,11 @@ function disconnect() {
     console.log("Disconnected");
 }
 
-/* Send place */
+/* Send place  location.href ="/preguntaGeneral.html";*/
 function sendPlace() {
-    location.href ="/preguntaGeneral.html";
-    var name = document.getElementById('place').value;
-    stompClient.send("/app/respJugador", {},  JSON.stringify({'place': name}));
+   
+    var name = document.getElementById('username').value;
+    stompClient.send("/app/respJugador", {},  JSON.stringify({'username': name}));
 }
 
 /* Show weather info */

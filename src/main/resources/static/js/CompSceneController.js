@@ -151,9 +151,9 @@ var information = (function Information() {
         rellenar = num;      
     }
     function getAllJugadores(){
-        axios.get('/jugadores').then(function (response) {
-            
-            document.getElementById("jugadores").innerHTML = "Jugadores : " + response.data;
+        axios.get('/question').then(function (response) {
+            alert(response.data);
+            document.getElementById("pl").innerHTML = "Jugadores : " + response.data;
             console.log(response.data)
             information.getRespuestas();
         })
@@ -213,6 +213,7 @@ var pregunta = (function Pregunta() {
     function hacer() {
         pregunta.selectQUestion();
         pregunta.hora();
+        information.getAllJugadores();
     }
     function hora() {
         int = setInterval(function () {

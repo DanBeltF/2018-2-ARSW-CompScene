@@ -68,8 +68,8 @@ public class STOMPMessagesHandler {
 			logger.info("Get weather from " + jugador.getJugador());
                         compserv.addJugador(jugador.getJugador());
                         nomre=jugador.getJugador();
-                        int temp=compserv.getIdJugador(jugador.getJugador());
-                        Jugador tempp=compserv.getJUgador(temp);
+                        //int temp=compserv.getIdJugador(jugador.getJugador());
+                        Jugador tempp=compserv.getJUgador(jugador.getJugador());
                         
 			/* Lets make a pause */
 			Thread.sleep(1000);

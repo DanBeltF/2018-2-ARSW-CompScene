@@ -29,6 +29,7 @@ import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
 import edu.eci.arsw.compscene.model.impl.PreguntaVerdaderoFalso;
 import edu.eci.arsw.compscene.persistence.impl.Tripla;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -62,11 +63,11 @@ public interface CompSceneServices {
     float getPuntaje() throws CompSceneServicesException;
     
     void addJugador(String nombre)throws CompSceneServicesException;
-    int getIdJugador (String nombre)throws CompSceneServicesException;
     
-    Jugador getJUgador(int id)throws CompSceneServicesException;
+    Jugador getJUgador(String nombre)throws CompSceneServicesException;
  
     String jugadorToString(String nombre)throws CompSceneServicesException;
     
-    List<Jugador> allJugadores()throws CompSceneServicesException;
+   List<String>  allJugadores()throws CompSceneServicesException;
+    void deleteJugador(String u)throws CompSceneServicesException;
 }

@@ -38,8 +38,8 @@
                 </div>
                 
                 <input type="button" id="con" value="Connect" onclick="javascript:connect()"/>
-                <p>Su Nombre<input type="text" id="place" name="place" value=""/>      
-                    <input type="button" id="conn" value="Iniciar" onclick="javascript:sendPlace()"/></p>
+                <p>Su Nombre<input type="text" id="username" name="place" value=""/>      
+                    <input type="button" id="conn" value="Iniciar" onclick="appIndex.addUser()"/></p>
                 <p> 
                     Esperando Jugadores 
                     Porfavor Espere
@@ -78,6 +78,7 @@
         <script src="./js/myjs.js"></script>
         <script src="./js/sockjs.min.js"></script>
         <script src="./js/stomp.js"></script>
-
+        <script src="js/apiclient.js"></script>
+        <script src="js/appIndex.js"></script>
     </body>
 </html>
