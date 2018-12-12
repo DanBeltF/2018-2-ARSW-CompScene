@@ -254,7 +254,7 @@ public class CompSceneServicesStub implements CompSceneServices {
         puntajeTemas.add(t2);
         puntajeTemas.add(t);
 
-        respuestas = new CopyOnWriteArrayList<>();
+            respuestas = new CopyOnWriteArrayList<>();
         listaPreguntas = new CopyOnWriteArrayList<>();
         puntaje = new CopyOnWriteArrayList<>();
         //Primer tipo de pregunta rellenar

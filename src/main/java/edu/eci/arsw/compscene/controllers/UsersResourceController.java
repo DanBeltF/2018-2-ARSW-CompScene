@@ -102,18 +102,7 @@ private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(
         }
     }
 
-    
-    @RequestMapping(path = "/{user}",method = RequestMethod.GET)
-    public ResponseEntity<?> getPuntajeUsuario(@PathVariable String user) {
-        try {
-            //Obtener datos
-            compserv.
-            return new ResponseEntity<>(compserv.getJUgador(user), HttpStatus.ACCEPTED);
-        } catch (CompSceneServicesException ex) {
-            Logger.getLogger(UsersResourceController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
+
     
     
 }
