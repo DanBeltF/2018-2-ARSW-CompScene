@@ -48,7 +48,7 @@ public class CompSceneWebSocketConfigHeroku extends AbstractWebSocketMessageBrok
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stompendpoint").withSockJS();
+        registry.addEndpoint("/respJugador").withSockJS();
         
     }
     

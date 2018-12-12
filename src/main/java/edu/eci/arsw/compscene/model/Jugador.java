@@ -37,7 +37,6 @@ public class Jugador {
 
     private int id;
     private String nombre;
-    private String password;
     private float puntajeJugador;
     private List<Tupla<String, Float>> puntajeTemas;
     private float tiempoFinal;
@@ -53,10 +52,9 @@ public class Jugador {
      * @param puntajeJugador
      * @param puntajeTemas
      */
-    public Jugador(int id, String nombre, String password, float puntajeJugador, List<Tupla<String, Float>> puntajeTemas) {
+    public Jugador(int id, String nombre, float puntajeJugador, List<Tupla<String, Float>> puntajeTemas) {
         this.id = id;
         this.nombre = nombre;
-        this.password = password;
         this.puntajeJugador = puntajeJugador;
         this.puntajeTemas = puntajeTemas;
         
@@ -250,22 +248,6 @@ public class Jugador {
     }
 
     /**
-     * Obtiene el password del jugador
-     * @return Password del jugador
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Configura el password de jugador
-     * @param password - credencial
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
      * Obtiene el puntaje del jugador
      * @return Puntaje del jugador
      */
@@ -299,7 +281,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", password=" + password + ", puntajeJugador=" + puntajeJugador + '}';
+        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", password=" +  ", puntajeJugador=" + puntajeJugador + '}';
     }
 
 }

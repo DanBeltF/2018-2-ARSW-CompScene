@@ -23,11 +23,19 @@
  */
 package edu.eci.arsw.compscene.mom;
 
+import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.model.Pregunta;
+import edu.eci.arsw.compscene.persistence.impl.Tupla;
+import edu.eci.arsw.compscene.services.CompSceneServices;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -35,14 +43,25 @@ import org.springframework.stereotype.Controller;
  * @author dbeltran
  */
 @Controller
+@EnableScheduling
 public class STOMPMessagesHandler {
-	
+        private static Logger logger=Logger.getLogger(STOMPMessagesHandler.class);
+        private List<Jugador> participantes=new ArrayList<Jugador>();
+    
 	@Autowired
 	SimpMessagingTemplate msgt;
         
-	@MessageMapping("/preguntas/{tipopregunta}")    
-	public void recibirPregunta(Pregunta p,@DestinationVariable String tipopregunta) throws Exception {
-            System.out.println("Nuevo punto recibido en el servidor!:"+p);
-           
+        @Autowired
+        private CompSceneServices compserv;
+        
+	@MessageMapping("/jug")    
+        @SendTo("/topic/respJugador")
+	public Jugador recibirJugador(String nombre) throws Exception {
+            
+            compserv.addJugador(nombre);
+            
+            int temp=compserv.getIdJugador(nombre);
+            System.out.println("EL jugador es"+nombre);
+            return compserv.getJUgador(temp);
 	}
 }

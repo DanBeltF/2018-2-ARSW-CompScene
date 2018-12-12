@@ -23,6 +23,7 @@
  */
 package edu.eci.arsw.compscene.services;
 
+import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
 import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
@@ -135,11 +136,35 @@ public class CompSceneServicesStub implements CompSceneServices {
         }
         return puntajetotal;
     }
+        @Override
+    public void addJugador(String nombre) throws CompSceneServicesException {
+        jugadores.add(new Jugador(jugadores.size()+1,nombre, 0, puntajeTemas));
+        
+    }
+    @Override
+    public int getIdJugador(String nombre) throws CompSceneServicesException {
+        int resp=0;
+        for(int i=0; i<jugadores.size();i++){
+            Jugador temp=jugadores.get(i);
+            if(temp.getNombre().equalsIgnoreCase(nombre)){
+                resp=temp.getId();
+            }
+        }
+        return resp ;
+        
+    }
+
+      @Override
+    public Jugador getJUgador(int id) throws CompSceneServicesException {
+        return jugadores.get(id);
+    }
+    
+    
     private static final List<PreguntaRellenar> listasPreguntasRellenar;
     private static final List<PreguntaSeleccionMultiple> listasPreguntaSeleccionMultiple;
     //private static final List<PreguntaVerdaderoFalso> listasPreguntaVerdaderoFalso;
-
-    
+    private static final List<Jugador> jugadores;
+     private static final List<Tupla<String, Float>> puntajeTemas;
     private static final List<Tripla<String, Boolean, Float>> respuestas;
     private static final Tripla<String, Boolean, Float> respuesta1;
     private static final Tripla<String, Boolean, Float> respuesta2;
@@ -179,8 +204,15 @@ public class CompSceneServicesStub implements CompSceneServices {
     private static final List<Float> puntaje;
     
     static {
-        
-        
+         jugadores = new CopyOnWriteArrayList<>();
+          puntajeTemas=new CopyOnWriteArrayList<>();
+      //Agregando puntajes temas
+        Tupla t=new Tupla("MATEMATICAS", 43.0);
+        Tupla t1=new Tupla("Programacion", 25.0);
+        Tupla t2=new Tupla("Logica", 35.0);         
+        puntajeTemas.add(t1);
+        puntajeTemas.add(t2);
+        puntajeTemas.add(t);
         
         respuestas = new CopyOnWriteArrayList<>();
         listaPreguntas= new CopyOnWriteArrayList<>();

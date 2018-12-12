@@ -97,9 +97,9 @@ public class CompScenceServicesTests {
         puntajeTemas.add(t1);
         puntajeTemas.add(t2);
         
-        Jugador jug1= new Jugador (12, "Daniel", "duq", 12.2f, puntajeTemas);
-        Jugador jug2= new Jugador (13, "beltran", "duq", 12.2f, puntajeTemas);
-        Jugador jug3= new Jugador (15, "Cesar", "duq", 12.2f, puntajeTemas);
+        Jugador jug1= new Jugador (12, "Daniel",  12.2f, puntajeTemas);
+        Jugador jug2= new Jugador (13, "beltran", 12.2f, puntajeTemas);
+        Jugador jug3= new Jugador (15, "Cesar", 12.2f, puntajeTemas);
         respuestas = new CopyOnWriteArrayList<>();
         listaPreguntas= new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar= new CopyOnWriteArrayList<>();
@@ -143,7 +143,7 @@ public class CompScenceServicesTests {
         tripla.add(tr1);
         tripla.add(tr2);        
         
-        Jugador j1=new Jugador(1, "Daniel", "Beltran", 5.0f, puntajeTemas);
+        Jugador j1=new Jugador(1, "Daniel",  5.0f, puntajeTemas);
     
          Assert.assertEquals(-25.0f, j1.calcularPuntajeEspecifico(tripla), 0);
         

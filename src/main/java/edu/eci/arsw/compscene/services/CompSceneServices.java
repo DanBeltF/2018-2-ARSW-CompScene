@@ -23,6 +23,7 @@
  */
 package edu.eci.arsw.compscene.services;
 
+import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
 import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
 import edu.eci.arsw.compscene.model.impl.PreguntaVerdaderoFalso;
@@ -60,6 +61,9 @@ public interface CompSceneServices {
     
     float getPuntaje() throws CompSceneServicesException;
     
-
+    void addJugador(String nombre)throws CompSceneServicesException;
+    int getIdJugador (String nombre)throws CompSceneServicesException;
+    
+    Jugador getJUgador(int id)throws CompSceneServicesException;
     
 }
