@@ -110,6 +110,22 @@ public class CompSceneController {
         }
     }
     
+    
+        /**
+     *
+     * @return la pregunta de rellenar como CopyOnWriteArrayList
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/jugadores")
+    public ResponseEntity<?> getAllJugadores(){
+        try {
+            return new ResponseEntity<>(compserv.allJugadores(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    
     @PostMapping(path = "/respuestas/concretas")
     public void setRespuesta(@RequestBody String respuesta){
            System.out.println("LA RESPUESTA ES"+respuesta);

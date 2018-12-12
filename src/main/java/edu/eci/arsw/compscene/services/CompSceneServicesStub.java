@@ -160,6 +160,22 @@ public class CompSceneServicesStub implements CompSceneServices {
     }
     
     
+     public String jugadorToString(String nombre)throws CompSceneServicesException {
+         String tmp="";
+         for (int i=0;i<jugadores.size();i++){
+            Jugador temp=jugadores.get(i);
+            if(temp.getNombre().equalsIgnoreCase(nombre)){
+                tmp=temp.toString();
+            }
+        }
+
+         return tmp;
+     }
+     public List<Jugador> allJugadores()throws CompSceneServicesException{
+     
+         return jugadores;
+     }
+    
     private static final List<PreguntaRellenar> listasPreguntasRellenar;
     private static final List<PreguntaSeleccionMultiple> listasPreguntaSeleccionMultiple;
     //private static final List<PreguntaVerdaderoFalso> listasPreguntaVerdaderoFalso;

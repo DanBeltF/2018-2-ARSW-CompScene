@@ -27,6 +27,7 @@ import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import edu.eci.arsw.compscene.services.CompSceneServices;
+import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
@@ -48,20 +49,50 @@ public class STOMPMessagesHandler {
         private static Logger logger=Logger.getLogger(STOMPMessagesHandler.class);
         private List<Jugador> participantes=new ArrayList<Jugador>();
     
+        
+        private String nomre;
+        
 	@Autowired
 	SimpMessagingTemplate msgt;
-        
+      
         @Autowired
         private CompSceneServices compserv;
         
 	@MessageMapping("/weather")    
         @SendTo("/topic/weatherinfo")
-	public Jugador recibirJugador(String nombre) throws Exception {
-            
-            compserv.addJugador(nombre);
-            logger.info("Get weather from " + nombre);
-            int temp=compserv.getIdJugador(nombre);
-            System.out.println("EL jugador es"+nombre);
-            return compserv.getJUgador(temp);
+	public String recibirJugador(JugadorInfo jugador) throws Exception {
+                String wInfo = null;
+                logger.info("Llegamos");
+		try {
+                    logger.info("de veras");
+			logger.info("Get weather from " + jugador.getJugador());
+                        compserv.addJugador(jugador.getJugador());
+                        nomre=jugador.getJugador();
+                        int temp=compserv.getIdJugador(jugador.getJugador());
+                        Jugador tempp=compserv.getJUgador(temp);
+                        
+			/* Lets make a pause */
+			Thread.sleep(1000);
+
+			/* Return weather info for the given place */
+			wInfo = tempp.toString();
+                        
+                           
+                        
+
+			logger.info("Retrieving weather from " + jugador.getJugador());
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return wInfo;
+            //return compserv.getJUgador(temp);
+	}
+        
+        
+        public void runWInfo() throws CompSceneServicesException {
+		this.msgt.convertAndSend("/topic/weatherinfo",
+				compserv.jugadorToString(nomre));
 	}
 }

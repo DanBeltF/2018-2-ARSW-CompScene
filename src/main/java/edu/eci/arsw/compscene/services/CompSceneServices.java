@@ -65,5 +65,8 @@ public interface CompSceneServices {
     int getIdJugador (String nombre)throws CompSceneServicesException;
     
     Jugador getJUgador(int id)throws CompSceneServicesException;
+ 
+    String jugadorToString(String nombre)throws CompSceneServicesException;
     
+    List<Jugador> allJugadores()throws CompSceneServicesException;
 }

@@ -150,7 +150,21 @@ var information = (function Information() {
     function setRellenar(num) {
         rellenar = num;      
     }
+    function getAllJugadores(){
+        axios.get('/jugadores').then(function (response) {
+            
+            document.getElementById("jugadores").innerHTML = "Jugadores : " + response.data;
+            console.log(response.data)
+            information.getRespuestas();
+        })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        
+    }
+    
     return {
+        getAllJugadores:getAllJugadores,
         getPreguntaSeleccionMultiple: getPreguntaSeleccionMultiple,
         getPreguntasVerdaderoFalso: getPreguntasVerdaderoFalso,
         getPereguntasRellenar: getPereguntasRellenar,

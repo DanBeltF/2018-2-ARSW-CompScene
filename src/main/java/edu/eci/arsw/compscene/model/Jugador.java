@@ -28,11 +28,13 @@ import edu.eci.arsw.compscene.persistence.impl.Tupla;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author dcastiblanco
  */
+
 public class Jugador {
 
     private int id;

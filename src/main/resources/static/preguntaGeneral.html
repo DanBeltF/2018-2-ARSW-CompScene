@@ -8,7 +8,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="assets/css/main.css" />
-        
+
         <script type="text/javascript" src="./js/CompSceneController.js"></script>
 
 
@@ -33,7 +33,7 @@
             </header>
             <h3 style="text-align:center" id="enun"> </h3>
             <form method="post" name="formulario">
-                
+
             </form>
             <div   id="respuesta" style="text-align:center" >
                 <!-- Respuesta -->
@@ -54,7 +54,14 @@
                     <td id="i" width="91">15</td>
                 </tr>                
             </table>
-         </div> <!-- Footer -->
+            <table id="actual" width="165" align="center" onload="information.getAllJugadores()">
+           <div   id="jugadores" style="text-align:center" >
+               <td colspan="3" align="center"><p>los jugadores son</p></td>
+                <!-- Respuesta -->
+            </div>            
+            </table>
+ 
+        </div> <!-- Footer -->
         <footer id="footer">
             <div class="inner">
                 <h3>ARSW-2018 2</h3>

@@ -1,7 +1,7 @@
 /* JavaScript for websocket client */
 var stompClient = null;
 
-
+var nombre=null;
 
 /* Connect to topic using web sockets */
 function connect() {
@@ -27,9 +27,9 @@ function disconnect() {
 
 /* Send place */
 function sendPlace() {
-    alert("LLEGAMOS");
-    
-    stompClient.send("/app/weather", {}, JSON.stringify({'name': $("#name").val()}));
+    location.href ="/preguntaGeneral.html";
+    var name = document.getElementById('place').value;
+    stompClient.send("/app/respJugador", {},  JSON.stringify({'place': name}));
 }
 
 /* Show weather info */
@@ -40,8 +40,3 @@ function showWeather(wInfo) {
     response.innerHTML = content + newInfo;
 }
 
-function sl(){
-    connect();
-    sendPlace();
-    
-}
