@@ -36,6 +36,7 @@ public abstract class Pregunta {
     private String tema;
     private List<String> opcionesDeRespuesta;
     private Float tiempo;
+    private Object respJUgador;
 
     public Pregunta(int id, String enunciado, String tema, List<String> opcionesDeRespuesta, Float tiempo) {
         this.id = id;
@@ -43,6 +44,7 @@ public abstract class Pregunta {
         this.tema = tema;
         this.opcionesDeRespuesta = opcionesDeRespuesta;
         this.tiempo = tiempo;
+        this.respJUgador=null;
     }
     
     public int getId() {
@@ -86,9 +88,11 @@ public abstract class Pregunta {
     }
     
     public Object getRespuestaJugador(){
-        return null;
+        return respJUgador;
     }
-    
+    public void setRespuestaJugador(Object ob){
+        respJUgador=ob;
+    }    
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta){
         return false;
     }

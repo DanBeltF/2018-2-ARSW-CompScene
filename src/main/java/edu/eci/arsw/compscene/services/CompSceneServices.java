@@ -24,6 +24,7 @@
 package edu.eci.arsw.compscene.services;
 
 import edu.eci.arsw.compscene.model.Jugador;
+import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
 import edu.eci.arsw.compscene.model.impl.PreguntaSeleccionMultiple;
 import edu.eci.arsw.compscene.model.impl.PreguntaVerdaderoFalso;
@@ -36,6 +37,8 @@ import java.util.Set;
  * @author dcastiblanco
  */
 public interface CompSceneServices {
+    
+    void addRespuestasfin(String respuesta, int idpregunta)throws CompSceneServicesException;
     
     void addPreguntaRellenar(PreguntaRellenar nueva_pregunta_rellenar) throws CompSceneServicesException;
     
@@ -64,10 +67,14 @@ public interface CompSceneServices {
     
     void addJugador(String nombre)throws CompSceneServicesException;
     
+    
+    List<Jugador> alJugadores() throws CompSceneServicesException ;
+    
     Jugador getJUgador(String nombre)throws CompSceneServicesException;
  
     String jugadorToString(String nombre)throws CompSceneServicesException;
     
    List<String>  allJugadores()throws CompSceneServicesException;
     void deleteJugador(String u)throws CompSceneServicesException;
+    float punteador()throws CompSceneServicesException;
 }

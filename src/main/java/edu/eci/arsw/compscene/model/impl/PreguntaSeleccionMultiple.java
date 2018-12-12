@@ -58,7 +58,10 @@ public class PreguntaSeleccionMultiple extends Pregunta{
     public Object getRespuestaJugador() {
         return super.getRespuestaJugador(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override
+    public void setRespuestaJugador(Object ob){
+        super.setRespuestaJugador(ob);
+    }    
     @Override
     public void setTiempo(Float tiempo) {
         super.setTiempo(tiempo); //To change body of generated methods, choose Tools | Templates.

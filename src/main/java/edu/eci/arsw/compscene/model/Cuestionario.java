@@ -46,6 +46,10 @@ public class Cuestionario {
      * @param jugadores
      * @param respuestas
      */
+    public Cuestionario(){
+        preguntas=new CopyOnWriteArrayList<>();
+        jugadores=new CopyOnWriteArrayList<>();
+    }
     public Cuestionario(int id, List<Pregunta> preguntas, List<Jugador> jugadores,List<Tripla<String, Boolean, Float>> respuestas) {
         this.id = id;
         this.jugadores = jugadores;
@@ -122,6 +126,9 @@ public class Cuestionario {
      */
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
+    }
+    public void setAddPreguntas(Pregunta pre){
+        preguntas.add(pre);
     }
 
     /**

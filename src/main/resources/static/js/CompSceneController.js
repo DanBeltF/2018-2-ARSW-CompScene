@@ -28,7 +28,7 @@ var rellenar = 0;
 var txt_respuestas = "";
 
 var total = 0;
-
+var idp;
 var numPreguntas=7;
 var pag2='/Estadisticas.html';
 
@@ -39,8 +39,8 @@ var information = (function Information() {
           }
 
     function setRespuestas() {
-        
-        axios.post('/respuestas/concretas', respuesta)
+ 
+        axios.post('/respuestas/concretas'+'/'+respuesta+'/'+idp)
                 .then(function (response) {
                     console.log('saved successfully')
                 });
@@ -90,6 +90,8 @@ var information = (function Information() {
         axios.get('/preguntas/psm').then(function (response) {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Seleccion : " + preguntas.enunciado;
+            idp=preguntas.id;
+            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data);
             information.getRespuestas();
@@ -106,6 +108,8 @@ var information = (function Information() {
         axios.get('/preguntas/pvf').then(function (response) {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : " + preguntas.enunciado;
+            idp=preguntas.id;
+            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data);
             information.getRespuestas();
@@ -118,6 +122,8 @@ var information = (function Information() {
         axios.get('/preguntas/pr').then(function (response) {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Rellenar : " + preguntas.enunciado;
+            idp=preguntas.id;
+            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
             rellenar = 1;
             console.log(response.data)
@@ -234,4 +240,3 @@ var pregunta = (function Pregunta() {
         hacer: hacer
     };
 })();
-    

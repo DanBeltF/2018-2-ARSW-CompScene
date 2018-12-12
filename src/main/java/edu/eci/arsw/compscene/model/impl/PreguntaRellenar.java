@@ -93,7 +93,10 @@ public class PreguntaRellenar extends Pregunta{
     public Object getRespuestaJugador() {
         return super.getRespuestaJugador(); //To change body of generated methods, choose Tools | Templates.
     }
-
+    @Override
+    public void setRespuestaJugador(Object ob){
+        super.setRespuestaJugador(ob);
+    }    
     /**
      *SetTeimpo
      * <p>Asigna un valor al tiempo del usuario.</p>

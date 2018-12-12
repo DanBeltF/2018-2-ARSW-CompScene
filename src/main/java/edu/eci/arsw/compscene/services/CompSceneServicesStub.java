@@ -23,6 +23,7 @@
  */
 package edu.eci.arsw.compscene.services;
 
+import edu.eci.arsw.compscene.model.Cuestionario;
 import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.model.impl.PreguntaRellenar;
@@ -45,9 +46,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompSceneServicesStub implements CompSceneServices {
 
+    
     public CompSceneServicesStub() {
     }
-
+    
+    
+    
+    @Override
+    public float punteador() throws CompSceneServicesException{
+            float pun=0.0f;
+            List<Pregunta>fin=cuestion.getPreguntas();
+            System.out.println("que tamaño tiene"+fin.size());
+            for(int i =0; i<fin.size();i++){
+                Pregunta temp=fin.get(i);
+                
+                
+            
+            
+            
+            }
+            
+            
+            
+            return 0.0f;
+    }
+    @Override
+    public void addRespuestasfin(String respuesta, int idPregunta){
+        List<Pregunta> temp=cuestion.getPreguntas();
+        for (int i=0;i<temp.size();i++){
+            Pregunta tm=temp.get(i);
+            
+            if(tm.getId()==idPregunta){
+                tm.setRespuestaJugador(respuesta);
+                temp.remove(i);
+                temp.add(tm);   
+            }
+        }
+     }
     @Override
     public void addPreguntaRellenar(PreguntaRellenar nueva_pregunta_rellenar) throws CompSceneServicesException {
         if (listaPreguntas.contains(nueva_pregunta_rellenar)) {
@@ -70,8 +105,7 @@ public class CompSceneServicesStub implements CompSceneServices {
             throw new CompSceneServicesException("La pregunta verdadero falso ya existe: " + nueva_pregunta_verdadero_falso.getEnunciado());
         }
         listaPreguntas.add(nueva_pregunta_verdadero_falso);
-    }
-
+    } 
     @Override
     public PreguntaRellenar getPreguntaRellenar() throws CompSceneServicesException {
         if (!listaPreguntas.contains(pr)) {
@@ -79,6 +113,7 @@ public class CompSceneServicesStub implements CompSceneServices {
         }
         double valIndice = Math.floor(Math.random() * listasPreguntasRellenar.size());
         PreguntaRellenar temp = listasPreguntasRellenar.get((int) valIndice);
+        cuestion.setAddPreguntas(temp);
         return temp;
     }
 
@@ -88,8 +123,10 @@ public class CompSceneServicesStub implements CompSceneServices {
             throw new CompSceneServicesException("La pregunta de seleccion multiple no existe: " + psm.getEnunciado());
         }
         //listasPreguntaSeleccionMultiple
+        
         double valIndice = Math.floor(Math.random() * listasPreguntaSeleccionMultiple.size());
         PreguntaSeleccionMultiple temp = listasPreguntaSeleccionMultiple.get((int) valIndice);
+        cuestion.setAddPreguntas(temp);
         return temp;
     }
 
@@ -98,7 +135,12 @@ public class CompSceneServicesStub implements CompSceneServices {
         if (!listaPreguntas.contains(pvf)) {
             throw new CompSceneServicesException("La pregunta de verdadero falso no existe: " + pvf.getEnunciado());
         }
-        return pvf;
+
+        double valIndice = Math.floor(Math.random() * listasPreguntaSeleccionMultiple.size());
+        PreguntaVerdaderoFalso temp = listasPreguntaVerdaderoFalso.get((int) valIndice);
+        cuestion.setAddPreguntas(temp);
+
+        return temp;
     }
 
     @Override
@@ -107,6 +149,7 @@ public class CompSceneServicesStub implements CompSceneServices {
             throw new CompSceneServicesException("La pregunta de rellenar no existe: " + pregunta_rellenar.getEnunciado());
         }
         listaPreguntas.remove(pregunta_rellenar);
+        
     }
 
     @Override
@@ -144,6 +187,7 @@ public class CompSceneServicesStub implements CompSceneServices {
         System.out.println("vamos bien, llegamos");
         if (!jugadores.containsKey(nombre)) {
             jugadores.putIfAbsent(nombre, new Jugador(jugadores.size() + 1, nombre, 0, puntajeTemas));
+            cuestion.setJugadores(alJugadores());
         } else {
             throw new CompSceneServicesException("El nombre de jugador ya se encuentra registrado,elija otro nombre");
         }
@@ -198,10 +242,27 @@ public class CompSceneServicesStub implements CompSceneServices {
         
         return t;
     }
-
+    
+    
+        @Override
+    public List<Jugador> alJugadores() throws CompSceneServicesException {
+        List<Jugador>t=new CopyOnWriteArrayList<>();
+        Iterator it=jugadores.keySet().iterator();
+        
+        while(it.hasNext()){
+            String i=(String) it.next();
+            t.add(jugadores.get(i));
+                
+        }
+        
+        return t;
+    }
+    
+    private static final Cuestionario cuestion;
+    private static  List<Pregunta> c;
     private static final List<PreguntaRellenar> listasPreguntasRellenar;
     private static final List<PreguntaSeleccionMultiple> listasPreguntaSeleccionMultiple;
-    //private static final List<PreguntaVerdaderoFalso> listasPreguntaVerdaderoFalso;
+    private static final List<PreguntaVerdaderoFalso> listasPreguntaVerdaderoFalso;
     //private static final List<Jugador> jugadores;
     private static final ConcurrentHashMap<String, Jugador> jugadores ;
     private static final List<Tupla<String, Float>> puntajeTemas;
@@ -223,6 +284,8 @@ public class CompSceneServicesStub implements CompSceneServices {
     private static final List<String> opcionesRespuestaSeleccion5;
 
     private static final List<String> opcionesRespuestaVF;
+    private static final List<String> opcionesRespuestaVF1;
+    private static final List<String> opcionesRespuestaVF2;
 
     private static final PreguntaRellenar pr;
     private static final PreguntaRellenar pr1;
@@ -238,11 +301,16 @@ public class CompSceneServicesStub implements CompSceneServices {
     private static final PreguntaSeleccionMultiple psm5;
 
     private static final PreguntaVerdaderoFalso pvf;
-    //private static final PreguntaVerdaderoFalso pvf1;
+    private static final PreguntaVerdaderoFalso pvf1;
+        private static final PreguntaVerdaderoFalso pvf2;
     private static final List<Pregunta> listaPreguntas;//Esto es general y toca ponerlas segun el tipo de pregunta
     private static final List<Float> puntaje;
 
     static {
+        
+        
+        cuestion=new Cuestionario();
+
         
         jugadores  = new ConcurrentHashMap<>();
         puntajeTemas = new CopyOnWriteArrayList<>();
@@ -269,16 +337,16 @@ public class CompSceneServicesStub implements CompSceneServices {
         //Tercer pregunta a rellenar
         respuestaCorrectaRellenar2 = new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar2.add("lenguaje artificial que puede ser usado para escribir programas");
-        pr2 = new PreguntaRellenar(respuestaCorrectaRellenar, 2, "¡Que es un lenguaje de programacion?", "Programacion", null, 6.7f);
+        pr2 = new PreguntaRellenar(respuestaCorrectaRellenar, 3, "¡Que es un lenguaje de programacion?", "Programacion", null, 6.7f);
         //Cuarta pregunta rellenar
         respuestaCorrectaRellenar3 = new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar3.add("son normas lexicas gramaticales parecidas a los lenguajes de programación");
-        pr3 = new PreguntaRellenar(respuestaCorrectaRellenar, 2, "¿A qué le llamamos pseudocódigo?", "Programacion", null, 6.7f);
+        pr3 = new PreguntaRellenar(respuestaCorrectaRellenar, 4, "¿A qué le llamamos pseudocódigo?", "Programacion", null, 6.7f);
         //Quinta pr rellenar
 
         respuestaCorrectaRellenar4 = new CopyOnWriteArrayList<>();
         respuestaCorrectaRellenar4.add("es el proceso pr el cual la informacin de una fuesnte es convertida en simbolos para ser comunicada");
-        pr4 = new PreguntaRellenar(respuestaCorrectaRellenar, 2, "Que es la codificación?", "Programacion", null, 6.7f);
+        pr4 = new PreguntaRellenar(respuestaCorrectaRellenar, 5, "Que es la codificación?", "Programacion", null, 6.7f);
 
         listasPreguntasRellenar = new CopyOnWriteArrayList<>();
         listasPreguntasRellenar.add(pr);
@@ -341,14 +409,35 @@ public class CompSceneServicesStub implements CompSceneServices {
         listasPreguntaSeleccionMultiple.add(psm5);
 
         //Tercer topo de respesta
+        listasPreguntaVerdaderoFalso= new CopyOnWriteArrayList<>();
         opcionesRespuestaVF = new CopyOnWriteArrayList<>();
         //opcionesRespuestaVF.add("91");
         opcionesRespuestaVF.add("Falso");
         opcionesRespuestaVF.add("Verdadero");
         pvf = new PreguntaVerdaderoFalso(91, 1, "9 elevado al cuadrado = 81", "Matemática", opcionesRespuestaVF, 2.9f);
+        
+        
+        
+    
+        opcionesRespuestaVF1 = new CopyOnWriteArrayList<>();
+        opcionesRespuestaVF1.add("Falso");
+        opcionesRespuestaVF1.add("Verdadero");
         //Segunda pregunta falso y verdadero
+        pvf1 = new PreguntaVerdaderoFalso(91,2,"¿Hay 300 horas en 5 dias?", "Matemática", opcionesRespuestaVF1, 2.9f);
+        
 
-        //pvf1 = new PreguntaVerdaderoFalso(91,2,"¿Hay 300 horas en 5 dias?", "Matemática", opcionesRespuestaVF, 2.9f);
+
+        opcionesRespuestaVF2 = new CopyOnWriteArrayList<>();
+        opcionesRespuestaVF2.add("Falso");
+        opcionesRespuestaVF2.add("Verdadero");
+        //Segunda pregunta falso y verdadero
+        pvf2 = new PreguntaVerdaderoFalso(91,3,"¿Hay 300 horas en 5 dias?", "Matemática", opcionesRespuestaVF2, 2.9f);
+        
+        listasPreguntaVerdaderoFalso.add(pvf);
+        listasPreguntaVerdaderoFalso.add(pvf1);
+        listasPreguntaVerdaderoFalso.add(pvf2);
+        
+        //
         listaPreguntas.add(pr);
         listaPreguntas.add(pr1);
         listaPreguntas.add(pr2);
@@ -363,12 +452,15 @@ public class CompSceneServicesStub implements CompSceneServices {
         listaPreguntas.add(psm5);
 
         listaPreguntas.add(pvf);
+        listaPreguntas.add(pvf1);
+        listaPreguntas.add(pvf2);
 
         respuesta1 = new Tripla("Matemática", true, 6.7f);
         respuesta2 = new Tripla("Lógica", false, 8.2f);
 
         respuestas.add(respuesta1);
         respuestas.add(respuesta2);
+        cuestion.setRespuestas(respuestas);
 
         for (int i = 0; i < respuestas.size(); i++) {
             puntaje.add(respuestas.get(i).getElem3());
