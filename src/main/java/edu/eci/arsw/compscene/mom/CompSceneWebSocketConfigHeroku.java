@@ -42,13 +42,15 @@ public class CompSceneWebSocketConfigHeroku extends AbstractWebSocketMessageBrok
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
+        System.out.println("hola, poraqui 1");
         config.enableSimpleBroker("/topic");
         config.setApplicationDestinationPrefixes("/app");        
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/respJugador").withSockJS();
+        System.out.println("hola, poraqui 2");
+        registry.addEndpoint("/weather").withSockJS();
         
     }
     

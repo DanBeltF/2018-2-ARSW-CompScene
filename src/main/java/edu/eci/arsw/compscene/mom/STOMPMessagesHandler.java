@@ -54,12 +54,12 @@ public class STOMPMessagesHandler {
         @Autowired
         private CompSceneServices compserv;
         
-	@MessageMapping("/jug")    
-        @SendTo("/topic/respJugador")
+	@MessageMapping("/weather")    
+        @SendTo("/topic/weatherinfo")
 	public Jugador recibirJugador(String nombre) throws Exception {
             
             compserv.addJugador(nombre);
-            
+            logger.info("Get weather from " + nombre);
             int temp=compserv.getIdJugador(nombre);
             System.out.println("EL jugador es"+nombre);
             return compserv.getJUgador(temp);
