@@ -8,7 +8,7 @@ package edu.eci.arsw.compscene.controllers;
 
 import com.google.gson.Gson;
 import edu.eci.arsw.compscene.model.Jugador;
-import edu.eci.arsw.compscene.mom.STOMPMessagesHandler;
+
 import edu.eci.arsw.compscene.services.CompSceneServices;
 import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.List;
@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/question")
 public class UsersResourceController {
-private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(STOMPMessagesHandler.class);
+
     @Autowired
     private CompSceneServices compserv;
     
@@ -39,17 +39,29 @@ private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(
      * @param user
      * @return 
      */
-    @RequestMapping(path = "/{user}",method = RequestMethod.GET)
+    @RequestMapping(path = "/res",method = RequestMethod.GET)
     public ResponseEntity<?> getUsuario(@PathVariable String user) {
         try {
-            //Obtener datos
-            return new ResponseEntity<>(compserv.getJUgador(user), HttpStatus.ACCEPTED);
+               Gson gson = new Gson();
+            String JSON = gson.toJson(compserv.punteadorJugadores());
+            return new ResponseEntity<>(JSON, HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(UsersResourceController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-    
+    @RequestMapping(path = "/re/{user}",method = RequestMethod.GET)
+    public ResponseEntity<?> getResultadoUsuario(@PathVariable String user) {
+        try {
+            //Obtener datos
+            Gson gson = new Gson();
+            String JSON = gson.toJson(compserv.getJUgador(user));
+            return new ResponseEntity<>(JSON, HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(UsersResourceController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
     /**
      * 
      * @return 
@@ -85,7 +97,7 @@ private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(
         try {
             
             Gson gson = new Gson();
-            logger.info("llegamos");
+
             Jugador p =gson.fromJson(u,Jugador.class );
             System.out.println("adicionamos"+p);
             System.out.println("a quien metimos"+p.getNombre());

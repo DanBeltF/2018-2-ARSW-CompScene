@@ -6,9 +6,16 @@
 
 
 var apiclient = (function () {
-
+    var userr;
+    var information;
     return {
+        gtUser: function(){
+            
+            return userr;
+        },
         postUser: function (user) {
+            userr=user;
+            
             return $.ajax({
                 url: "/question/",
                 type: "POST",
@@ -27,12 +34,13 @@ var apiclient = (function () {
                 data: JSON.stringify(user),
                 contentType: "application/json"});
         },
-        getUser: function (user, callback) {
-            return $.get("/Usuarios/" + user, callback);
+        getUser: function (user) {
+            return $.get("/Usuarios/" + user);
         },
         getAllUser: function () {
             return $.get("/question", callback);
         }
+
     };
 
 }());

@@ -21,44 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.mom;
+package edu.eci.arsw.compscene.model;
+
+import edu.eci.arsw.compscene.persistence.impl.Tripla;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  *
  * @author dicom
  */
-public final class JugadorInfo {
+public class Respuesta {
+    private int id;
+    private String respuesta;
     
-    private String jugador;
-
-	/**
-	 * @param placeArg
-	 */
-	public JugadorInfo() {
-		/* Empty */
-	}
-
-	/**
-	 * @param placeArg
-	 */
-	public JugadorInfo(String jugador) {
-		this.jugador = jugador;
-	}
-
-	/**
-	 * @return the place
-	 */
-	public String getJugador() {
-		return jugador;
-	}
-
-	/**
-	 * @param placeArg
-	 *            the place to set
-	 */
-	public void setJugadorInfo(String jugador) {
-		this.jugador = jugador;
-	}
-
+    public Respuesta(int id, String respuesta){ 
+        this.id=id;
+        this.respuesta=respuesta;
     
+    }
+    
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id=id;
+    }
+    public String getRespuesta(){
+        return respuesta;
+    }
+    public void setRespuesta(String respuesta){
+        this.respuesta=respuesta;
+    }
+    
+        @Override
+    public String toString() {
+        return "Respuesta{" + "id=" + id + ", respuesta=" + respuesta + '}';
+    }
+
 }

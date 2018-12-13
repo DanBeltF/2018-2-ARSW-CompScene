@@ -34,7 +34,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class Cuestionario {
     private int id;
-    private List<Jugador> jugadores;
+    //private List<Jugador> jugadores;
+    private Jugador jugador;
     private List<Pregunta> preguntas;
     private List<Tripla<String,Boolean,Float>> respuestas;
 
@@ -48,11 +49,13 @@ public class Cuestionario {
      */
     public Cuestionario(){
         preguntas=new CopyOnWriteArrayList<>();
-        jugadores=new CopyOnWriteArrayList<>();
+        //jugadores=new CopyOnWriteArrayList<>();
     }
-    public Cuestionario(int id, List<Pregunta> preguntas, List<Jugador> jugadores,List<Tripla<String, Boolean, Float>> respuestas) {
+    //public Cuestionario(int id, List<Pregunta> preguntas, List<Jugador> jugadores,List<Tripla<String, Boolean, Float>> respuestas) {
+    public Cuestionario(int id, List<Pregunta> preguntas, Jugador jugador,List<Tripla<String, Boolean, Float>> respuestas) {
         this.id = id;
-        this.jugadores = jugadores;
+        //this.jugadores = jugadores;
+        this.jugador=jugador;
         this.preguntas = preguntas;
         this.respuestas = respuestas;
     }
@@ -76,16 +79,21 @@ public class Cuestionario {
      *
      * @return los jugadores
      */
-    public List<Jugador> getJugadores() {
-        return jugadores;
+    //public List<Jugador> getJugadores() {
+    public Jugador getJugador() {
+        //return jugadores;
+        return jugador;
     }
 
     /**
      *
      * @param jugadores - cambia jugadores
      */
-    public void setJugadores(List<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    //public void setJugadores(List<Jugador> jugadores) {
+    public void setJugador(Jugador jugador) {
+        //this.jugadores = jugadores;
+        this.jugador = jugador;
+        
     }
 
     /**

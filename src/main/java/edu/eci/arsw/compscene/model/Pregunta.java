@@ -96,5 +96,9 @@ public abstract class Pregunta {
     public boolean validadorRespuesta(Object respuestaJugador, Object respuestaCorrecta){
         return false;
     }
-    
+        @Override
+    public String toString() {
+        return "Pregunta{" + "id=" + id + ", encunciado=" + enunciado + ", tema=" + tema + '}';
+    }
+
 }

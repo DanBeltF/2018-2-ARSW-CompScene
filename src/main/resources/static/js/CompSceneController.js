@@ -34,13 +34,25 @@ var pag2='/Estadisticas.html';
 
 
 var information = (function Information() {
+    function final(){
+        
+        
+        axios.get('/question/re'+'pepe')
+                .then(function (response) {
+                    
+                    console.log('saved successfully')
+                }); 
+
+    }
+    
+    
     function load(url){
         location.href ="/Estadisticas.html";
           }
 
     function setRespuestas() {
  
-        axios.post('/respuestas/concretas'+'/'+respuesta+'/'+idp)
+        axios.get('/res/concretas/'+respuesta+'/'+idp)
                 .then(function (response) {
                     console.log('saved successfully')
                 });
@@ -135,7 +147,8 @@ var information = (function Information() {
             respuesta = $("input[type=radio]:checked").val();
             //alert("Que es respuesta nonono"+respuesta);
             if(respuesta==null){
-                respuesta="SIN RESPUESTA";
+                respuesta="SINRESPUESTA";
+                idp=-1;
             }            
             information.setRespuestas();
             information.tiempo();
@@ -143,7 +156,8 @@ var information = (function Information() {
         } else {          
             respuesta = $("input[type=text]").val();
             if(respuesta==""){
-                respuesta="SIN RESPUESTA";
+                respuesta="SINRESPUESTA";
+                idp=-1;
             }
             information.setRespuestas();
             information.tiempo();
@@ -178,7 +192,8 @@ var information = (function Information() {
         setRellenar: setRellenar,
         setRespuestas: setRespuestas,
         tiempo: tiempo,
-        load:load
+        load:load,
+        final:final
 
     };
 })();

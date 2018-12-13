@@ -122,5 +122,9 @@ public class PreguntaVerdaderoFalso extends Pregunta{
         this.respuestaCorrecta = respuestaCorrecta;
     }
     
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     
 }

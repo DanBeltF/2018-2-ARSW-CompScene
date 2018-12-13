@@ -5,18 +5,11 @@ var susers;
 var appIndex = (function () {
 
     var api = apiclient;
-
     class Jugador {
         constructor(nombre) {
             this.nombre = nombre;
         }
-    }
-    var getUsers = function () {
-            
-        var susers = api.getAllUser();
-        ;
-
-    };    
+    };
     var postUser = function () {
         
         sessionStorage.setItem("player", document.getElementById("username").value);
@@ -27,7 +20,9 @@ var appIndex = (function () {
         postPromise.then(
                 function () {
                     var newURL = window.location.protocol + "//" + window.location.host + "/" + "/preguntaGeneral.html";
+                    
                     window.location.replace(newURL);
+                    document.getElementsByName("pll").innerHTML=username;
                 },
                 function () {
                     alert("You can't play with this username, it's playing");
@@ -36,22 +31,20 @@ var appIndex = (function () {
 
     };
 
-
+    var n;
     return {
         addUser: function () {
-            var username = document.getElementById("username").value;
+            susers = document.getElementById("username").value;
+            n=document.getElementsByName("pll").innerHTML=username;
             if (username === "") {
                 alert("Escriba un usuario valido");
             }
             else{
+                
                 postUser();
+                
             }   
         },
-        getAllUser: function(){
-            
-            getUsers();
-            
-        }
     };
 
 }());

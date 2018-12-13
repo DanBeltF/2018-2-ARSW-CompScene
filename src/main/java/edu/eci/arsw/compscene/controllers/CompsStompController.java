@@ -21,29 +21,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package edu.eci.arsw.compscene.mom;
+package edu.eci.arsw.compscene.controllers;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
-import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
-import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import edu.eci.arsw.compscene.model.CompMessage;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 
 /**
- * @author Beltran
  *
+ * @author dicom
  */
-@Configuration
-@EnableWebSocketMessageBroker
-public class CompSceneWebSocketConfigHeroku extends AbstractWebSocketMessageBrokerConfigurer {
-	@Override
-	public void configureMessageBroker(MessageBrokerRegistry config) {
-		config.enableSimpleBroker("/topic");
-		config.setApplicationDestinationPrefixes("/app");
-	}
+public class CompsStompController {
+   @MessageMapping("/chat.sendMessage")
+    @SendTo("/topic/public")
+    public CompMessage sendMessage(@Payload CompMessage chatMessage) {
+        return chatMessage;
+    }
 
-	@Override
-	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/weather").withSockJS();
-	}
+    @MessageMapping("/chat.addUser")
+    @SendTo("/topic/public")
+    public CompMessage addUser(@Payload CompMessage chatMessage, 
+                               SimpMessageHeaderAccessor headerAccessor) {
+        // Add username in web socket session
+        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        return chatMessage;
+    }
+   
 }

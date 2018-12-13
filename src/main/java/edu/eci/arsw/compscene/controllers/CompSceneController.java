@@ -26,6 +26,10 @@ package edu.eci.arsw.compscene.controllers;
 import edu.eci.arsw.compscene.model.Pregunta;
 import edu.eci.arsw.compscene.services.CompSceneServices;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import edu.eci.arsw.compscene.model.Jugador;
+import edu.eci.arsw.compscene.model.Respuesta;
 import edu.eci.arsw.compscene.services.CompSceneServicesException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +46,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 /**
  *
  * @author dbeltran
@@ -51,73 +54,73 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //@CrossOrigin("*")
 @RestController(value = "/preguntas")
 public class CompSceneController {
-    
+
     @Autowired
     private CompSceneServices compserv;
-    
+
     /**
      *
      * @return la pregunta de seleccion multiple como CopyOnWriteArrayList
-     */ 
+     */
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/psm")
-    public ResponseEntity<?> getPreguntaSeleccion(){
+    public ResponseEntity<?> getPreguntaSeleccion() {
         try {
-            Pregunta t=compserv.getPreguntaSeleccion();
-
             return new ResponseEntity<>(compserv.getPreguntaSeleccion(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
-      /**
+
+    /**
      *
      * @return Retorna las respuesta como un array
      */
     @RequestMapping(method = RequestMethod.GET, path = "/respuestas")
-    public ResponseEntity<?> getRespuestas(){
+    public ResponseEntity<?> getRespuestas() {
         try {
             return new ResponseEntity<>(compserv.getRespuestas(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
-    }  
-      /**
+    }
+
+    /**
      *
      * @return Retorna las respuesta como un array
      */
     @RequestMapping(method = RequestMethod.GET, path = "/resultados")
-    public ResponseEntity<?> getResultados(){
+    public ResponseEntity<?> getResultados() {
         try {
-            return new ResponseEntity<>(compserv.punteador(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(compserv.punteadorJugadores(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
-    }      
-    
+    }
+
     /**
      *
      * @return la pregunta de verdadero o falso como CopyOnWriteArrayList
      */
-    @RequestMapping(method = RequestMethod.GET,path = "/preguntas/pvf")
-    public ResponseEntity<?> getPreguntaVerdaderoFalso(){
+    @RequestMapping(method = RequestMethod.GET, path = "/preguntas/pvf")
+    public ResponseEntity<?> getPreguntaVerdaderoFalso() {
         try {
+
             return new ResponseEntity<>(compserv.getPreguntaVerdaderoFalso(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
+
     /**
      *
      * @return la pregunta de rellenar como CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/pr")
-    public ResponseEntity<?> getPreguntaRellenar(){
+    public ResponseEntity<?> getPreguntaRellenar() {
         try {
             return new ResponseEntity<>(compserv.getPreguntaRellenar(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
@@ -125,14 +128,13 @@ public class CompSceneController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-    
-    
-        /**
+
+    /**
      *
      * @return la pregunta de rellenar como CopyOnWriteArrayList
      */
     @RequestMapping(method = RequestMethod.GET, path = "/preguntas/jugadores")
-    public ResponseEntity<?> getAllJugadores(){
+    public ResponseEntity<?> getAllJugadores() {
         try {
 
             return new ResponseEntity<>(compserv.allJugadores(), HttpStatus.ACCEPTED);
@@ -141,26 +143,55 @@ public class CompSceneController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }
-        @RequestMapping(method = RequestMethod.GET, path = "/prueba")
-    public ResponseEntity<?> getAllresponse(){
-        try {
-   
-            return new ResponseEntity<>(compserv.punteador(), HttpStatus.ACCEPTED);
-        } catch (CompSceneServicesException ex) {
-            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
-        }
-    }
-    //@PathVariable String user
-    @PostMapping(path = "/respuestas/concretas/{respuesta}/{idp}")
-    public void setRespuesta(@PathVariable("respuesta") String respuesta, @PathVariable("idp") int idp){
-           System.out.println("LA RESPUESTA ES"+respuesta+"pDSDSADSA"+idp);
-           System.out.println("LA RESPUESTA ES"+respuesta+"PUYA"+idp);
-           
-    }
-    @PostMapping(path = "/tiempo")
-    public void setTiempo(@RequestBody String tiempo){
 
-           System.out.println("el tiempo es"+tiempo);
+    /**
+     * String json1 = "[{\"dorsal\":6," + "\"name\":\"Iniesta\"," +
+     * "\"demarcation\":[\"Right winger\",\"Midfielder\"]," + "\"team\":\"FC
+     * Barcelona\"}]";
+     *
+     * JsonParser parser = new JsonParser();
+     *
+     * // Obtain Array JsonArray gsonArr = parser.parse(json1).getAsJsonArray();
+     *
+     */
+
+    /**
+     * @param respuesta
+     * @param idp
+     * @return
+     * @throws CompSceneServicesException
+     */
+    //@PathVariable String user
+    //@PostMapping(path = "/respuestas/concretas/{respuesta}/{idp}")
+    @RequestMapping(method = RequestMethod.GET, value = "/res/concretas/{respuesta}/{idp}")
+    public ResponseEntity setRespuesta(@PathVariable("respuesta") String respuesta, @PathVariable("idp") int idp) throws CompSceneServicesException {
+        try{
+        Gson gson = new Gson();
+            System.out.println(""+respuesta);
+        //Boolean p = gson.fromJson(respuesta, Boolean.class);
+        //System.out.println("respuesta" + p.getRespuesta());        
+            System.out.println("si vamos");
+        compserv.setRespuestaJUgador(idp, respuesta);
+        return new ResponseEntity<>(new Respuesta(1,"hola"),HttpStatus.CREATED);
+            
+        }catch(Exception e){
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE,null,e);
+        }
+        
+
+        //System.out.println("a quien metimos" + p.getRespuesta());
+
+        // Jugador p =gson.fromJson(u,Jugador.class );
+        //compserv.setRespuestaJUgador(ee,e);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
+    
+    
+
+    @PostMapping(path = "/tiempo")
+    public void setTiempo(@RequestBody String tiempo) {
+
+        System.out.println("el tiempo es" + tiempo);
     }
 }

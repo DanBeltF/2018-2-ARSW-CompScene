@@ -121,4 +121,8 @@ public class PreguntaSeleccionMultiple extends Pregunta{
     }
     
     
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

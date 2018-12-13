@@ -38,6 +38,7 @@ import java.util.Set;
  */
 public interface CompSceneServices {
     
+   public void pr()throws CompSceneServicesException;
     void addRespuestasfin(String respuesta, int idpregunta)throws CompSceneServicesException;
     
     void addPreguntaRellenar(PreguntaRellenar nueva_pregunta_rellenar) throws CompSceneServicesException;
@@ -76,5 +77,8 @@ public interface CompSceneServices {
     
    List<String>  allJugadores()throws CompSceneServicesException;
     void deleteJugador(String u)throws CompSceneServicesException;
-    float punteador()throws CompSceneServicesException;
+   List<Jugador> punteadorJugadores() throws CompSceneServicesException;
+   
+   void setRespuestaJUgador(int IdPregunta, String Respuseta)throws CompSceneServicesException;
+   Jugador punteadorJugador(String nombre) throws CompSceneServicesException ;
 }
