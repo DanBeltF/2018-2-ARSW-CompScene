@@ -1,11 +1,15 @@
 var respuestasIndividual;
 var respuestaGrupal;
 
-
+var t;
 var getPDF = (function pdf() {
 
-
-
+    function pdd(){
+        alert("llegamos");
+        t=gset.getUser();
+        document.getElementById("usuario").innerHTML = "este usuario"+t;
+        alert(t);
+    }
     
     
     
@@ -33,7 +37,8 @@ var getPDF = (function pdf() {
         doc.save('Results.pdf');
     }
     return {
-        pd:pd
+        pd:pd,
+        pdd:pdd
 
     };
 })();

@@ -38,7 +38,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.springframework.stereotype.Service;
-
+import com.google.gson.Gson;
 /**
  *
  * @author dcastiblanco
@@ -58,17 +58,18 @@ public class CompSceneServicesStub implements CompSceneServices {
             List<Pregunta>fin=cuestion.getPreguntas();
             System.out.println("que tamaño tiene"+fin.size());
             for(int i =0; i<fin.size();i++){
+                Boolean v=false;
                 Pregunta temp=fin.get(i);
-                
-                
-            
+                if(temp.validadorRespuesta(temp.getRespuestaJugador(), temp.getOpcionesDeRespuesta())){
+                    pun+=80.0f;
+                }else{
+                    pun-=15.0f;
+                }
             
             
             }
             
-            
-            
-            return 0.0f;
+            return pun;
     }
     @Override
     public void addRespuestasfin(String respuesta, int idPregunta){
@@ -183,7 +184,7 @@ public class CompSceneServicesStub implements CompSceneServices {
     }
 
     @Override
-    public void addJugador(String nombre) throws CompSceneServicesException {
+    public void addJugador(String nombre) throws CompSceneServicesException {        
         System.out.println("vamos bien, llegamos");
         if (!jugadores.containsKey(nombre)) {
             jugadores.putIfAbsent(nombre, new Jugador(jugadores.size() + 1, nombre, 0, puntajeTemas));

@@ -30,8 +30,8 @@ var apiclient = (function () {
         getUser: function (user, callback) {
             return $.get("/Usuarios/" + user, callback);
         },
-        getAllUser: function (user, callback) {
-            return $.get("/Usuarios", callback);
+        getAllUser: function () {
+            return $.get("/question", callback);
         }
     };
 

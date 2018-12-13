@@ -50,7 +50,6 @@ public class Jugador {
      * 
      * @param id
      * @param nombre
-     * @param password
      * @param puntajeJugador
      * @param puntajeTemas
      */
@@ -283,7 +282,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", password=" +  ", puntajeJugador=" + puntajeJugador + '}';
+        return "Jugador{" + "id=" + id + ", nombre=" + nombre + ", puntajeJugador=" + puntajeJugador + '}';
     }
 
 }

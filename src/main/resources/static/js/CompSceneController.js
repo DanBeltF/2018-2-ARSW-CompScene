@@ -91,7 +91,6 @@ var information = (function Information() {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Seleccion : " + preguntas.enunciado;
             idp=preguntas.id;
-            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta Seleccion : ";
             console.log(response.data);
             information.getRespuestas();
@@ -109,7 +108,6 @@ var information = (function Information() {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Falso o verdadero : " + preguntas.enunciado;
             idp=preguntas.id;
-            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta F/V : ";
             console.log(response.data);
             information.getRespuestas();
@@ -123,7 +121,6 @@ var information = (function Information() {
             this.preguntas = response.data;
             document.getElementById("enun").innerHTML = "Pregunta Rellenar : " + preguntas.enunciado;
             idp=preguntas.id;
-            alert(idp);
             document.getElementById("respuesta").innerHTML = "Respuesta Rellenar : ";
             rellenar = 1;
             console.log(response.data)
@@ -157,8 +154,10 @@ var information = (function Information() {
         rellenar = num;      
     }
     function getAllJugadores(){
-        axios.get('/question').then(function (response) {
-            alert(response.data);
+        var a;
+        axios.get('/question').then(function (response) {           
+            a=response.data;
+
             document.getElementById("pl").innerHTML = "Jugadores : " + response.data;
             console.log(response.data)
             information.getRespuestas();

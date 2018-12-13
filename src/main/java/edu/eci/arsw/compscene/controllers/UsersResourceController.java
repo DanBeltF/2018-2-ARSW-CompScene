@@ -6,9 +6,12 @@
 package edu.eci.arsw.compscene.controllers;
 
 
+import com.google.gson.Gson;
+import edu.eci.arsw.compscene.model.Jugador;
 import edu.eci.arsw.compscene.mom.STOMPMessagesHandler;
 import edu.eci.arsw.compscene.services.CompSceneServices;
 import edu.eci.arsw.compscene.services.CompSceneServicesException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +58,15 @@ private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(
     public ResponseEntity<?> getAllUsuarios() {
         try {
             //Obtener datos
+            
+            List<String> k=compserv.allJugadores();
+            for(int i=0;i<k.size();i++){
+                String j=k.get(i);
+                System.out.println("mmiremos"+j);
+            
+            }
+            
+            
             return new ResponseEntity<>(compserv.allJugadores(), HttpStatus.ACCEPTED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(UsersResourceController.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,10 +83,14 @@ private static org.apache.log4j.Logger logger=org.apache.log4j.Logger.getLogger(
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> addUsuario(@RequestBody String u) {
         try {
-            System.out.println("adicionamos"+u);
+            
+            Gson gson = new Gson();
             logger.info("llegamos");
+            Jugador p =gson.fromJson(u,Jugador.class );
+            System.out.println("adicionamos"+p);
+            System.out.println("a quien metimos"+p.getNombre());
             //Registrar dato
-            compserv.addJugador(u);
+            compserv.addJugador(p.getNombre());
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (CompSceneServicesException ex) {
             Logger.getLogger(UsersResourceController.class.getName()).log(Level.SEVERE, null, ex);

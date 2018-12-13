@@ -84,7 +84,19 @@ public class CompSceneController {
             return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
         }
     }  
-    
+      /**
+     *
+     * @return Retorna las respuesta como un array
+     */
+    @RequestMapping(method = RequestMethod.GET, path = "/resultados")
+    public ResponseEntity<?> getResultados(){
+        try {
+            return new ResponseEntity<>(compserv.punteador(), HttpStatus.ACCEPTED);
+        } catch (CompSceneServicesException ex) {
+            Logger.getLogger(CompSceneController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error", HttpStatus.NOT_FOUND);
+        }
+    }      
     
     /**
      *
