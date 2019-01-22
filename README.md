@@ -8,7 +8,7 @@
 ## Arquitecturas de Software (ARSW)<br />
 ## 2018-2<br/>
 ## Escuela Colombiana de Ingeniería Julio Garavito - Ingeniería de Sistemas
-#### Juego educativo, competitivo y a su vez de entretenimiento tipo trivia que pretende poner a prueba los conocimientos que el usuario tenga sobre: matemáticas,  programación o lógica calculativa, mediante tres tipos de pregunta en tiempo real.
+#### Juego educativo, competitivo y a su vez de entretenimiento tipo trivia que pretende poner a prueba los conocimientos que los usuarios tengan sobre: matemáticas,  programación o lógica calculativa, mediante tres tipos de pregunta en tiempo real.
 ---
 ### Integrantes
 - Daniel E. Beltrán Franco
